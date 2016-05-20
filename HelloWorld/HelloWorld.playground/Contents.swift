@@ -16,4 +16,10 @@ var str = "Hello, World!!!!!"
 var str_gb = "Goodbye World!!!!!"
 var str_gm = "Good midday"
 
+
 //Definition timo
+
+var int = 6
+Print (int)
+
+git merge --ff-only @{u}
