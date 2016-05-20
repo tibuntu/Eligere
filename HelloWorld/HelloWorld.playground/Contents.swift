@@ -18,8 +18,6 @@ var str_gm = "Good midday"
 
 
 //Definition timo
-
-var int = 6
-Print (int)
+ var int_number = 1
 
 git merge --ff-only @{u}
