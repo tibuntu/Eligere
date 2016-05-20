@@ -16,3 +16,6 @@ var str = "Hello, World!!!!!"
 
 
 //Definition timo
+
+var int = 6
+Print (int)
