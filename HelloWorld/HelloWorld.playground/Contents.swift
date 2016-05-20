@@ -6,9 +6,14 @@ import UIKit
 
 //Definition Nico variables
 
-var str_nico1 = "Change 1 Nico"
-var str_nico3 = "Change 3 Nico"
-var str_nico2 = "Change 2 Nico"
+var str_name = "Nico"
+var int_birthdate = 1990
+var int_date = 2016
+var int_age = 0
+
+int_age = int_date - int_birthdate
+
+print(int_age)
 
 
 //Definition program
