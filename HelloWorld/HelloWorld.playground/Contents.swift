@@ -5,4 +5,6 @@ import UIKit
 
 var str2 = "Change Nico"
 
+var str4 = "Change hier!"
+
 var str = "Hello, World!!!!!"
