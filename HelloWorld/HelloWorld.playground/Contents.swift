@@ -13,3 +13,6 @@ var str_nico2 = "Change 2 Nico"
 
 //Definition program
 var str = "Hello, World!!!!!"
+
+
+//Definition timo
