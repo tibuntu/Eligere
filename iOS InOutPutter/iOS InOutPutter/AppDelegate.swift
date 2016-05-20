@@ -24,10 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var f = Fahrenheit()
         print("The default temperature is \(f.temperature)° Fahrenheit")
         // Prints "The default temperature is 32.0° Fahrenheit"
+
         
-        let response = readLine(stripNewline: true)
-        print(response)
-        
+        var neu: String
+        neu = "Werbung"
+        print(neu)
         
         let greeting = "Hello World"
         print(greeting)
