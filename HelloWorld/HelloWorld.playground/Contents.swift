@@ -2,4 +2,7 @@
 
 import UIKit
 
+
+var str2 = "Change Nico"
+
 var str = "Hello, World!!!!!"
