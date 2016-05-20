@@ -25,11 +25,17 @@ var str_gm = "Good midday"
 //Definition timo
  var int_number = 1
 
-var int = 6
-//Print (int)
+let x = 4
 
+var brot = "brot"
+
+print(brot)
+
+print(x)
 //#git merge --ff-only @{u}
 
 var zahl = 1
 
 zahl++
+
+
