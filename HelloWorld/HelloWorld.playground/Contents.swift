@@ -16,6 +16,10 @@ var str = "Hello, World!!!!!"
 var str_gb = "Goodbye World!!!!!"
 var str_gm = "Good midday"
 
+var f
+
+print(f)
+
 
 //Definition timo
  var int_number = 1
