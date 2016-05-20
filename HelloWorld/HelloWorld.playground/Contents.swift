@@ -7,4 +7,6 @@ var str2 = "Change Nico"
 
 var str_nico = "Change 2 Nico"
 
+var str2 = "Change Nico"
+
 var str = "Hello, World!!!!!"
