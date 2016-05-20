@@ -20,6 +20,10 @@ var str_gm = "Good midday"
 //Definition timo
 
 var int = 6
-Print (int)
+//Print (int)
 
-git merge --ff-only @{u}
+//#git merge --ff-only @{u}
+
+var zahl = 1
+
+zahl++
