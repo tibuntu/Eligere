@@ -20,3 +20,5 @@ var str_gb = "Goodbye World!!!!!"
 
 var int = 6
 Print (int)
+
+git merge --ff-only @{u}
