@@ -1,0 +1,11 @@
+# Select image from https://hub.docker.com/r/_/php/
+image: php:5.6
+
+# Install dependencies
+before_script:
+  - hostname
+  - bash ci/docker_install.sh > /dev/null
+
+test:app:
+  script:
+    - phpunit --configuration phpunit_myapp.xml

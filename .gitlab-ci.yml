@@ -1,15 +1,12 @@
-before_script:
-  - hostname
-  - apt-get update -qq && apt-get install -y -qq sqlite3 libsqlite3-dev nodejs
-  - ruby -v
-  - which ruby
-  - gem install bundler --no-ri --no-rdoc
-  - bundle install --jobs $(nproc)  "${FLAGS[@]}"
+stages:
+  - build
 
-rspec:
+build_project:
+  stage: build
   script:
-    - bundle exec rspec
-
-rubocop:
-  script:
-    - bundle exec rubocop
+    - xcodebuild clean -project iOS.xcodeproj -scheme SchemeName | xcpretty
+    - xcodebuild test -project iOS.xcodeproj -scheme SchemeName -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.2' | xcpretty -s
+  tags:
+    - ios_9-2
+    - xcode_7-2
+    - osx_10-11
