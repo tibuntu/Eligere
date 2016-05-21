@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:iOS InOutPutter.xcodeproj">
+      location = "self:iOS.xcodeproj">
    </FileRef>
 </Workspace>

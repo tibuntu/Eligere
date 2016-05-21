@@ -1,37 +1,21 @@
 //
 //  AppDelegate.swift
-//  iOS InOutPutter
+//  iOS
 //
-//  Created by Timo Koller on 20/05/16.
-//  Copyright © 2016 Timo Koller. All rights reserved.
+//  Created by Krueger Nicolai on 21/05/16.
+//  Copyright © 2016 Krueger Nicolai. All rights reserved.
 //
 
 import UIKit
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        struct Fahrenheit {
-            var temperature: Double
-            init() {
-                temperature = 32.0
-            }
-        }
-        var f = Fahrenheit()
-        print("The default temperature is \(f.temperature)° Fahrenheit")
-        // Prints "The default temperature is 32.0° Fahrenheit"
 
-        
-        var neu: String
-        neu = "Werbung"
-        print(neu)
-        
-        let greeting = "Hello World"
-        print(greeting)
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
         return true
     }
 
@@ -58,5 +42,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
-  }
+}
 

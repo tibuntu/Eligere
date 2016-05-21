@@ -1,15 +1,15 @@
 //
-//  iOS_InOutPutterTests.swift
-//  iOS InOutPutterTests
+//  iOSTests.swift
+//  iOSTests
 //
-//  Created by Timo Koller on 20/05/16.
-//  Copyright © 2016 Timo Koller. All rights reserved.
+//  Created by Krueger Nicolai on 21/05/16.
+//  Copyright © 2016 Krueger Nicolai. All rights reserved.
 //
 
 import XCTest
-@testable import iOS_InOutPutter
+@testable import iOS
 
-class iOS_InOutPutterTests: XCTestCase {
+class iOSTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
