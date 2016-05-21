@@ -72,7 +72,7 @@ if accessCode == receivedCode {
         
         emergencyTrigger = true
         cameraState = true
-        print("alert: \(emergencyCall.Message) - call string(\(emergencyCall.emergencyNumber))")
+        print("alert: \(emergencyCall.emergencyMessage) - call \(String(emergencyCall.emergencyNumber))")
         
     }
     
