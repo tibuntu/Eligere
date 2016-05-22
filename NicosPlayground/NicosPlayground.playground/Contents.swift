@@ -83,3 +83,46 @@ if accessCode == receivedCode {
     }
     
 }
+
+
+// ######## START CAR ########
+
+func startCar(keyState:Bool, carDoorState:Bool) throws {
+    
+    if keyState == true && carDoorState == true {
+        
+        print("engine starts")
+        return
+        
+    }
+    
+}
+
+do {
+    
+    try startCar(true, carDoorState: true)
+    print("car starts")
+    
+}
+
+
+// ######## optional variables ########
+
+var a:Int?
+
+a = 1
+
+a != nil ? a! : 3
+
+
+// ######## range operator ########
+
+var begin = 4
+var ende = 8
+
+for index in begin...ende {
+    
+    index
+    
+}
+
