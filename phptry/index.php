@@ -7,6 +7,7 @@ echo "My first PHP script!<br>";
 echo "Test frome home dir!<br>";
 $test = "Test";
 echo $test;
+/*
 <br>
 $zahl = 2084;
 echo $zahl;
@@ -14,6 +15,7 @@ echo $zahl;
 print $zahl + 5;
 <br>
 var_dump($zahl);
+*/
 ?>
 
 </body>
