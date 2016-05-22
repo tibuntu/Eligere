@@ -3,6 +3,9 @@
 import UIKit
 
 
+
+// ######## HELLO WORLD ########
+
 //define string for output
 
 var str_text: String
@@ -13,14 +16,17 @@ var str_text: String
 str_text = "Hello World"
 
 
-//define tuple
-
-let statusMessage = (statusCode: 403, statusText: "error - not found")
-
-
 //print output
 
 print("The first words in swift 2: \(str_text)")
+
+
+
+// ######## TUPLE ########
+
+//define tuple
+
+let statusMessage = (statusCode: 403, statusText: "error - not found")
 
 
 //print tuple items
@@ -72,7 +78,7 @@ if accessCode == receivedCode {
         
         emergencyTrigger = true
         cameraState = true
-        print("alert: \(emergencyCall.emergencyMessage) - call \(String(emergencyCall.emergencyNumber))")
+        print("alert: \(emergencyCall.emergencyMessage) - call \(String(emergencyCall.emergencyNumber))") //<<<<<< OUTPUT
         
     }
     
