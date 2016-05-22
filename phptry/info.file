@@ -1,0 +1,17 @@
+=========================================================
+Web-Server structure:
+
+- /home/developer/InOutPutter/phptry (git repo)
+
+- /etc/apache2/sites-available/php.conf (apache config)
+
+Also available in repo under web-conf dir
+
+- /var/www/phptry/index.php is a symlink from:
+- /home/developer/InOutPutter/phptry/index.php
+
+So if you want to update the web-server just change
+index.php in phptry dir in git and push your commit.
+Afterwards do a git pull in InOutPutter dir on the
+web-server
+=========================================================
