@@ -106,7 +106,7 @@ do {
 }
 
 
-// ######## optional variables ########
+// ######## OPTIONAL VARIABLES ########
 
 var a:Int?
 
@@ -115,7 +115,7 @@ a = 1
 a != nil ? a! : 3
 
 
-// ######## range operator ########
+// ######## RANGE OPERATOR ########
 
 var begin = 4
 var ende = 8
@@ -125,4 +125,61 @@ for index in begin...ende {
     index
     
 }
+
+
+// ######## STRING HANDLE ########
+
+var text = "Hello"
+
+print(text[text.startIndex.advancedBy(3).successor()])
+
+
+for index in text.characters.indices {
+    
+    print(text[index], terminator: "")
+    
+}
+
+
+text.insertContentsOf(" there".characters, at: text.endIndex)
+
+text.removeAtIndex(text.endIndex.advancedBy(-6))
+
+print(text)
+
+
+text.removeRange(text.endIndex.advancedBy(-5)..<text.endIndex)
+
+print(text.endIndex)
+
+text.insertContentsOf(" in the morning".characters, at: text.endIndex)
+
+
+// ######## COLLECTIONS ########
+
+
+//arrays
+
+var list = [String]()
+
+list.append("Joe")
+list.append("Lisa")
+list.append("Marry")
+
+for index in list.startIndex..<list.endIndex {
+    
+    print(list[index])
+    
+}
+
+
+var list2 = [String](count: 3, repeatedValue: "Harry")
+
+var list3 = [String](count: 3, repeatedValue: "Kim")
+
+list2 += list3
+
+
+
+
 
