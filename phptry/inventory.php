@@ -18,10 +18,12 @@ if ($result->num_rows > 0) {
   $results[] = $row;
 }
   echo json_encode($results);
+/*
 } else {
 echo "ID: " . $row["id"].  " - Name: " . $row["fullname"]. "<br>";
   }
 }
+ */
 $conn->close();
 ?>
   
