@@ -4,9 +4,9 @@ $username = "pnpadmin";
 $password = "PnProot5806";
 $dbname = "inventory_pnp";
 $tablename = "item";
-
+<head>
 header('Content-Type: application/json; charset=utf-8');
-
+</head>
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 
