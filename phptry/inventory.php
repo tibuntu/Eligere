@@ -10,15 +10,14 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 $sql = "SELECT * FROM item";
 $result = $conn->query($sql);
+$results = array ();
 
 if ($result->num_rows > 0) {
     // output data of each row
   while($row = $result->fetch_assoc()) {
-  header("Content-Type: application/json");
-  echo json_encode(array(
-    "ID:" => $row['id'],
-    "Name:" => $row['fullname'],
-  ));
+  $results[] = $row;
+}
+  echo json_encode($results);
 } else {
 echo "ID: " . $row["id"].  " - Name: " . $row["fullname"]. "<br>";
   }
