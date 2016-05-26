@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "pnpadmin";
 $password = "PnProot5806";
 $dbname = "inventory_pnp";
-#$table = "name";
+$tablename = "item";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,7 +13,16 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "CREATE TABLE item (
+function TableExists($tablename, $db) {
+      
+      // Get a list of tables contained within the database.
+$result = mysql_list_tables($db);
+$rcount = mysql_num_rows($result);
+     // Check each in list for a match.
+    for ($i=0;$i<$rcount;$i++) {
+    if (mysql_tablename($result, $i)==$tablename) return true;
+} else {
+ $sql = "CREATE TABLE item (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 fullname VARCHAR(30) NOT NULL,
 reg_date TIMESTAMP
@@ -23,6 +32,8 @@ if ($conn->query($sql) === TRUE) {
       echo "Table item created successfully";
 } else {
       echo "Error creating table: " . $conn->error;
+}
+ 
 }
 
 $sql = "SELECT * FROM item";
