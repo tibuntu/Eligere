@@ -1,10 +1,11 @@
 <?php
 $servername = "localhost";
-$username = "username";
-$password = "password";
+$username = "pnpadmin";
+$password = "PnProot5806";
+$database = "inventory_pnp";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $database, $username, $password);
 
 // Check connection
 if ($conn->connect_error) {
