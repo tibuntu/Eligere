@@ -5,6 +5,8 @@ $password = "PnProot5806";
 $dbname = "inventory_pnp";
 $tablename = "item";
 
+header('Content-Type: application/json; charset=utf-8');
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 
@@ -17,7 +19,6 @@ if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
   $results[] = $row;
 }
-  header('Content-Type: application/json; charset=utf-8');
   echo json_encode($results, JSON_PRETTY_PRINT);
 }
 /*
