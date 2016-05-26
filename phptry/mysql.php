@@ -14,8 +14,9 @@ if ($conn->connect_error) {
 }
 
 $sql = "CREATE TABLE item (
-  id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-  fullname VARCHAR(30) NOT NULL,
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+fullname VARCHAR(30) NOT NULL,
+reg_date TIMESTAMP
 )";
 
 if ($conn->query($sql) === TRUE) {
