@@ -13,7 +13,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-  while(row = $result->fetch_assoc()) {
+  while($row = $result->fetch_assoc()) {
   header("Content-Type: application/json");
   echo json_encode(array(
     "ID:" => $row['id'],
