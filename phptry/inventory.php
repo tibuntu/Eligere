@@ -17,8 +17,11 @@ if ($result->num_rows > 0) {
   echo "ID: " . $row["id"].  " - Name: " . $row["fullname"]. "<br>";
   }
 } else {
-  header("Content-Type: application/json");
-  echo json_encode($result);
- }
+  header("Content-Type: application/json");
+  echo json_encode(array(
+    "ID:" => $row['id'],
+    "Name:" => $row['fullname'],
+   ));
+}
 $conn->close();
 ?>
