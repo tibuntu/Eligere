@@ -17,6 +17,6 @@ print $zahl + 5;
 var_dump($zahl);
 */
 ?>
-
+<a href="input.php">click me</a>
 </body>
 </html>
