@@ -16,13 +16,10 @@ if ($conn->connect_error) {
 $sql = "CREATE TABLE item (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
   fullname VARCHAR(30) NOT NULL,
-reg_date TIMESTAMP
 )";
 
 if ($conn->query($sql) === TRUE) {
       echo "Table item created successfully";
-#} elseif {
-#      
 } else {
       echo "Error creating table: " . $conn->error;
 }
@@ -33,7 +30,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   // output data of each row
        while($row = $result->fetch_assoc()) {
-       echo "ID: " . $row["id"].  " - Name: " . $row["fullname"]. . "<br>";
+       echo "ID: " . $row["id"].  " - Name: " . $row["fullname"]. "<br>";
        }
 } else {
        echo "0 results";
