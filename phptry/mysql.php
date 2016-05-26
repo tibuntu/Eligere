@@ -21,7 +21,7 @@ $rcount = mysql_num_rows($result);
      // Check each in list for a match.
     for ($i=0;$i<$rcount;$i++) {
     if (mysql_tablename($result, $i)==$tablename) return true;
-} else {
+} 
  $sql = "CREATE TABLE item (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 fullname VARCHAR(30) NOT NULL,
