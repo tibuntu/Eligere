@@ -1,27 +1,26 @@
 <?php
   $host='localhost';
-  $user='AdminGuy';
-    $password='administrator';
+  $user='pnpadmin';
+    $password='PnProot5806';
     
     $connection = mysql_connect($host,$user,$password);
       
-      $usernmae = $_POST['a'];
-      $pass = $_POST['b'];
-        $info = $_POST['c'];
-        $num = $_POST['d'];
+      $fullname = $_POST['a'];
+      $id = $_POST['b'];
+        $reg_date = $_POST['c'];
           
           if(!$connection){
                 die('Connection Failed');
                   }
           else{
-                $dbconnect = @mysql_select_db('YoutubeTutorialDB', $connection);
+                $dbconnect = @mysql_select_db('inventory_pnp', $connection);
                     
                     if(!$dbconnect){
                             die('Could not connect to Database');
                                 }
                     else{
-                            $query = "INSERT INTO `YoutubeTutorialDB`.`Users` (`Username`, `Password`, `Info`, `FavoriteNumber`)
-                                      VALUES ('$username','$pass','$info','$num');";
+                            $query = "INSERT INTO `inventory_pnp`.`item` (`fullname`, `id`, `reg_date`)
+                                      VALUES ('$fullname','$reg_date','$id');";
                                   mysql_query($query, $connection) or die(mysql_error());
                                   
                                   echo 'Successfully added.';
