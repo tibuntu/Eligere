@@ -20,7 +20,7 @@
                                 }
                     else{
                             $query = "INSERT INTO `inventory_pnp`.`item` (`fullname`, `id`, `reg_date`)
-                                      VALUES ('$fullname','$reg_date','$id');";
+                                      VALUES ('$fullname', '$id', '$reg_date');";
                                   mysql_query($query, $connection) or die(mysql_error());
                                   
                                   echo 'Successfully added.';
