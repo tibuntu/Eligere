@@ -31,7 +31,6 @@ class ItemTableViewController: UITableViewController {
         
     }
     
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ItemTableViewCell"
@@ -50,7 +49,7 @@ class ItemTableViewController: UITableViewController {
         
         selectedItem = indexPath.row
         
-    }    
+    }
     
     //MARK: - Navigation
     
@@ -63,7 +62,18 @@ class ItemTableViewController: UITableViewController {
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
         jsonInsertItem(itemName)
+        jsonReceiveItems()
         
-    }    
+        refreshControl?.beginRefreshing()
+        
+        if refreshControl!.refreshing {
+            
+            refreshControl!.endRefreshing()
+            
+        }
+        
+        self.tableView.reloadData()
+        
+    }
     
 }
