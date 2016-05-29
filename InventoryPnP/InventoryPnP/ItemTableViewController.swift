@@ -57,19 +57,8 @@ class ItemTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         selectedItem = indexPath.row
-        //self.performSegueWithIdentifier(ItemDetailSegue, sender: nil)
         
-    }
-    
-    func jsonReceiveData() {
-        
-        let url = NSURL(string: "http://tico-kk.eu/inventory.php")
-        let data = NSData(contentsOfURL: url!)
-        
-        items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
-        
-    }
-    
+    }    
     
     /*
      // Override to support conditional editing of the table view.

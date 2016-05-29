@@ -18,7 +18,15 @@ class ItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let item = items[selectedItem]
+        
+        if selectedItem != -1 {
+            
+            idLabel.text = item["id"] as? String
+            NameLabel.text = item["fullname"] as? String
+            
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
