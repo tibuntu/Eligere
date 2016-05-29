@@ -8,9 +8,6 @@
 
 import UIKit
 
-var items: NSArray = []
-var selectedItem: Int = 0
-
 class ItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
@@ -59,7 +56,8 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        
+        selectedItem = indexPath.row
+        //self.performSegueWithIdentifier(ItemDetailSegue, sender: nil)
         
     }
     

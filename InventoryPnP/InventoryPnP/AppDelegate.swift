@@ -8,6 +8,9 @@
 
 import UIKit
 
+var items: NSArray = []
+var selectedItem: Int = 0
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
