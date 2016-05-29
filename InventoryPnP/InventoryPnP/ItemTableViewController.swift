@@ -8,9 +8,6 @@
 
 import UIKit
 
-var items: NSArray = []
-var selectedItem: Int = 0
-
 class ItemTableViewController: UITableViewController {
     
     override func viewDidLoad() {
@@ -59,19 +56,9 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        selectedItem = indexPath.row
         
-        
-    }
-    
-    func jsonReceiveData() {
-        
-        let url = NSURL(string: "http://tico-kk.eu/inventory.php")
-        let data = NSData(contentsOfURL: url!)
-        
-        items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
-        
-    }
-    
+    }    
     
     /*
      // Override to support conditional editing of the table view.
