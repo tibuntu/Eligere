@@ -6,9 +6,9 @@
   $imgData = file_get_contents($filename);
   $size = getimagesize($filename);
 
-  mysql_connect($host, "$username", "$password");
+  mysql_connect($host, "$user", "$password");
   mysql_select_db ("$dbname");
-  $sql = sprintf("INSERT INTO testblob
+  $sql = sprintf("INSERT INTO images 
    (image_type, image, image_size, image_name)
    VALUES
    ('%s', '%s', '%d', '%s')",
