@@ -15,6 +15,7 @@
 		C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */; };
 		C746D89D1CFAF23A00F6323E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */; };
 		C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89E1CFAFC0800F6323E /* JsonConnector.swift */; };
+		C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		C746D89E1CFAFC0800F6323E /* JsonConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonConnector.swift; sourceTree = "<group>"; };
+		C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemAddViewController.swift; path = ../ItemAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				C746D8921CFAE5E500F6323E /* Info.plist */,
 				C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */,
 				C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */,
+				C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */,
 				C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */,
 				C746D89E1CFAFC0800F6323E /* JsonConnector.swift */,
 			);
@@ -147,6 +150,7 @@
 				C746D8991CFAE67E00F6323E /* ItemTableViewCell.swift in Sources */,
 				C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */,
 				C746D89D1CFAF23A00F6323E /* ItemDetailViewController.swift in Sources */,
+				C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */,
 				C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */,
 				C746D8871CFAE5E400F6323E /* AppDelegate.swift in Sources */,
 			);
@@ -300,6 +304,7 @@
 				C746D8971CFAE5E500F6323E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
