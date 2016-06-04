@@ -1,11 +1,9 @@
 <?php
-  include 'vars.php';
-
   function getItem()
   {
-     $conn = mysqli_connect($host, $user, $password, $dbname);
-     $sql = "SELECT * FROM item;";
-     $result = $conn->query($sql);
+     include 'vars.php';
+     $sql = "SELECT * FROM item";
+     $result = $connection->query($sql);
      $results = array ();
      header("Content-Type: application/json; charset=utf-8");
 
