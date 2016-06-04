@@ -1,8 +1,7 @@
 <?php
-  include 'vars.php';
-
   function postItem() 
     {    
+      include 'vars.php';
       $fullname = $_POST['a'];
       $id = $_POST['b'];
       $reg_date = $_POST['c'];
