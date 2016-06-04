@@ -3,9 +3,9 @@
 
   function getItem()
   {
-     $tablename = "item";
+     $conn = mysqli_connect($host, $user, $password, $dbname);
      $sql = "SELECT * FROM item;";
-     $result = $connection->query($sql);
+     $result = $conn->query($sql);
      $results = array ();
      header("Content-Type: application/json; charset=utf-8");
 
