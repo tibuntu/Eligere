@@ -1,7 +1,7 @@
 <?php
   include 'vars.php';
 
-  function postItem()
+  function getItem()
     {
      $tablename = "item";
      $conn = new mysqli($servername, $username, $password, $dbname);
