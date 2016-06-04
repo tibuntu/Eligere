@@ -2,9 +2,8 @@
   include 'vars.php';
 
   function getItem()
-    {
+  {
      $tablename = "item";
-     $conn = new mysqli($servername, $username, $password, $dbname);
      $sql = "SELECT * FROM item";
      $result = $conn->query($sql);
      $results = array ();
