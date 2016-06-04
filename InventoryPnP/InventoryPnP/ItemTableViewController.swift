@@ -13,7 +13,8 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        jsonReceiveItems()
+        jsonGetItems()
+        jsonGetSetData()
         
         self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
@@ -40,7 +41,7 @@ class ItemTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         let item = items[indexPath.row]
         
-        cell.idLabel.text = item["id"] as? String
+        //cell.idLabel.text = item["id"] as? String
         cell.nameLabel.text = item["fullname"] as? String
         
         return cell
@@ -50,7 +51,7 @@ class ItemTableViewController: UITableViewController {
     
     func handleRefresh(refreshControl: UIRefreshControl) {
 
-        jsonReceiveItems()
+        jsonGetItems()
         print("Refreshing...")
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -74,12 +75,8 @@ class ItemTableViewController: UITableViewController {
     
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
-        jsonInsertItem(itemName)
-        jsonReceiveItems()
-        
-        print("Reload...")
-        
-        
+        jsonPostItem(itemName)
+        jsonGetItems()
 
     }
     

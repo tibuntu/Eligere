@@ -9,6 +9,7 @@
 import UIKit
 
 var items:NSArray = []
+var setData:NSArray = []
 var selectedItem: Int = -1
 
 @UIApplicationMain

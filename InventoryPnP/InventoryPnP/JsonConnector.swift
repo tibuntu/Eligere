@@ -8,7 +8,7 @@
 
 import Foundation
 
-func jsonReceiveItems() {
+func jsonGetItems() {
     
     let url = NSURL(string: "http://tico-kk.eu/inventory.php")
     let data = NSData(contentsOfURL: url!)
@@ -17,7 +17,16 @@ func jsonReceiveItems() {
     
 }
 
-func jsonInsertItem(fullname: String) -> Bool {
+func jsonGetSetData() {
+    
+    let url = NSURL(string: "http://tico-kk.eu/inventory.php?getpost=getSetData")
+    let data = NSData(contentsOfURL: url!)
+    
+    setData = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
+    
+}
+
+func jsonPostItem(fullname: String) -> Bool {
     
     let url = NSURL(string: "http:/tico-kk.eu/create_item.php")
     let request = NSMutableURLRequest(URL: url!)
