@@ -13,7 +13,7 @@
                   VALUES ('$fullname');";
         mysql_query($query, $connection) or die(mysql_error());
           echo $query;
-      } while (($_GET["getpost"];) == "postItem");
+      } while (($_GET["getpost"]) == "postItem");
        /*
 else {
 ,'$reg_date','$id'
