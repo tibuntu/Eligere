@@ -41,7 +41,6 @@ class ItemTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         let item = items[indexPath.row]
         
-        //cell.idLabel.text = item["id"] as? String
         cell.nameLabel.text = item["fullname"] as? String
         
         return cell

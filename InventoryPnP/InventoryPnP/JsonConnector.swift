@@ -13,6 +13,8 @@ func jsonGetItems() {
     let url = NSURL(string: "http://tico-kk.eu/inventory.php")
     let data = NSData(contentsOfURL: url!)
     
+    print(data?.description)
+    
     items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
     
 }
@@ -22,7 +24,7 @@ func jsonGetSetData() {
     let url = NSURL(string: "http://tico-kk.eu/inventory.php?getpost=getSetData")
     let data = NSData(contentsOfURL: url!)
     
-    setData = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
+    //setData = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
     
 }
 
