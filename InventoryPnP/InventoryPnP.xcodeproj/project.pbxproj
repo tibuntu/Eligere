@@ -13,11 +13,8 @@
 		C746D8911CFAE5E500F6323E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C746D88F1CFAE5E500F6323E /* LaunchScreen.storyboard */; };
 		C746D8991CFAE67E00F6323E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */; };
 		C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */; };
-		C746D89D1CFAF23A00F6323E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */; };
 		C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89E1CFAFC0800F6323E /* JsonConnector.swift */; };
-		C76682881D0306800067B5BA /* ItemAddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76682871D0306800067B5BA /* ItemAddTableViewController.swift */; };
 		C766828A1D0309120067B5BA /* SetDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76682891D0309120067B5BA /* SetDataTableViewCell.swift */; };
-		C770CAEE1D020CEC00C6F58A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770CAED1D020CEC00C6F58A /* LoginViewController.swift */; };
 		C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,11 +27,8 @@
 		C746D8921CFAE5E500F6323E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
-		C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		C746D89E1CFAFC0800F6323E /* JsonConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonConnector.swift; sourceTree = "<group>"; };
-		C76682871D0306800067B5BA /* ItemAddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemAddTableViewController.swift; path = ../ItemAddTableViewController.swift; sourceTree = "<group>"; };
 		C76682891D0309120067B5BA /* SetDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDataTableViewCell.swift; sourceTree = "<group>"; };
-		C770CAED1D020CEC00C6F58A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ../LoginViewController.swift; sourceTree = "<group>"; };
 		C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemAddViewController.swift; path = ../ItemAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,12 +68,9 @@
 				C746D88D1CFAE5E500F6323E /* Assets.xcassets */,
 				C746D88F1CFAE5E500F6323E /* LaunchScreen.storyboard */,
 				C746D8921CFAE5E500F6323E /* Info.plist */,
-				C770CAED1D020CEC00C6F58A /* LoginViewController.swift */,
 				C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */,
 				C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */,
-				C76682871D0306800067B5BA /* ItemAddTableViewController.swift */,
 				C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */,
-				C746D89C1CFAF23A00F6323E /* ItemDetailViewController.swift */,
 				C746D89E1CFAFC0800F6323E /* JsonConnector.swift */,
 			);
 			path = InventoryPnP;
@@ -156,11 +147,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C770CAEE1D020CEC00C6F58A /* LoginViewController.swift in Sources */,
 				C746D8991CFAE67E00F6323E /* ItemTableViewCell.swift in Sources */,
 				C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */,
-				C746D89D1CFAF23A00F6323E /* ItemDetailViewController.swift in Sources */,
-				C76682881D0306800067B5BA /* ItemAddTableViewController.swift in Sources */,
 				C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */,
 				C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */,
 				C766828A1D0309120067B5BA /* SetDataTableViewCell.swift in Sources */,

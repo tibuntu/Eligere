@@ -14,7 +14,7 @@ class ItemTableViewController: UITableViewController {
         super.viewDidLoad()
         
         jsonGetItems()
-        jsonGetSetData()
+        //jsonGetSetData()
         
         self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
@@ -75,6 +75,7 @@ class ItemTableViewController: UITableViewController {
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
         jsonPostItem(itemName)
+        print(itemName)
         jsonGetItems()
 
     }
