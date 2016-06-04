@@ -1,14 +1,14 @@
 <?php
-  #include 'vars.php';
+  include 'vars.php';
   include 'getItem.php';
-  #include 'postItem.php';
+  include 'postItem.php';
   
-  switch (($_GET["getpost"])) 
+  switch ($method) 
   {
-  case "postItem":
+  case "POST":
     postItem();
     break;
-  case "getItem":
+  case "GET":
     getItem();
     break;          
   }
