@@ -5,7 +5,7 @@
   {
      $tablename = "item";
      $sql = "SELECT * FROM item";
-     $result = $conn->query($sql);
+     $result = $connection->query($sql);
      $results = array ();
      header("Content-Type: application/json; charset=utf-8");
 
