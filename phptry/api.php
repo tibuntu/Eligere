@@ -3,12 +3,12 @@
   include 'getItem.php';
   include 'postItem.php';
   
-  switch ($method) 
+  switch (($method["getpost"])) 
   {
-  case "POST":
+  case "postItem":
     postItem();
     break;
-  case "GET":
+  case "getItem":
     getItem();
     break;          
   }
