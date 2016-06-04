@@ -15,6 +15,9 @@ class ItemTableViewController: UITableViewController {
         
         jsonReceiveItems()
         
+        self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+
+        
     }
     
     // MARK: - Table view data source
@@ -43,6 +46,16 @@ class ItemTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: - Refresh function
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+
+        jsonReceiveItems()
+        print("Refreshing...")
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     //MARK: - Actions
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -64,16 +77,10 @@ class ItemTableViewController: UITableViewController {
         jsonInsertItem(itemName)
         jsonReceiveItems()
         
-        refreshControl?.beginRefreshing()
+        print("Reload...")
         
-        if refreshControl!.refreshing {
-            
-            refreshControl!.endRefreshing()
-            
-        }
         
-        self.tableView.reloadData()
-        
+
     }
     
 }
