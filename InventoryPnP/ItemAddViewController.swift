@@ -8,7 +8,7 @@
 
 import UIKit
 
-var itemName = ""
+var itemURL = ""
 
 class ItemAddViewController: UIViewController, UITextFieldDelegate {
 
@@ -33,7 +33,7 @@ class ItemAddViewController: UIViewController, UITextFieldDelegate {
         
         if sender === saveButton {
             
-            itemName = nameTextField.text!
+            itemURL = nameTextField.text!
             
         }
         

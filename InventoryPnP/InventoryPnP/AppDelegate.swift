@@ -12,7 +12,8 @@ var items:NSArray = []
 var setData: [Int: String] = [
         0:"Name",
 ]
-var selectedItem: Int = -1
+
+var postURL: String = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

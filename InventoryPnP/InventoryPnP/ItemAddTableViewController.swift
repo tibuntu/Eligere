@@ -8,10 +8,8 @@
 
 import UIKit
 
-var linkPhp: String = ""
-
 class ItemAddTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -39,7 +37,7 @@ class ItemAddTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemAddTableViewCell", forIndexPath: indexPath) as! ItemAddTableViewCell
 
         cell.nameLabel.text = setData[indexPath.row]
-
+        
         return cell
     }
     
@@ -47,6 +45,19 @@ class ItemAddTableViewController: UITableViewController {
         
         if sender === saveButton {
             
+            for (index, name) in setData {
+                
+                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ItemAddTableViewCell
+            
+                if postURL != "" { postURL += "&" }
+            
+                postURL += "\(name)=\(cell.insertTextField.text!)"
+            
+            }
+                
+            print(postURL)
             
         }
         

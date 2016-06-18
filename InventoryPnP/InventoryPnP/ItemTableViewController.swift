@@ -60,7 +60,7 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        selectedItem = indexPath.row
+        //selectedItem = indexPath.row
         
     }
     
@@ -74,22 +74,8 @@ class ItemTableViewController: UITableViewController {
     
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
-        let sourceViewController = segue.sourceViewController as? ItemAddTableViewController
+        jsonPostItem(postURL)
         
-        itemName = ""
-        
-        for (nameId, value) in setData {
-        
-            let sourceTableViewCell = sourceViewController?.tableView.cellForRowAtIndexPath(NSIndexPath(index: nameId)) as? ItemAddTableViewCell
-            
-            itemName = "&\(value)=\(sourceTableViewCell?.nameLabel.text)"
-        
-        }
-        
-        jsonPostItem("a=\(itemName)")
-        print(itemName)
-        jsonGetItems()
-
     }
     
 }

@@ -15,7 +15,7 @@ func jsonGetItems() {
     
     print(data?.description)
     
-    //items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
+    items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
     
 }
 
@@ -38,14 +38,13 @@ func jsonPostItem(urlTrailer: String) -> Bool {
     let postString:NSString = "getpost=postItem&\(urlTrailer)"
     let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
     
-    print("postString: \(postString)")
-    print("url: \(url)")
-    
     request.HTTPMethod = "POST"
     request.HTTPBody = postData
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
     print(request.HTTPBody)
+    
+    print(url)
     
     let task = session.dataTaskWithRequest(request)
     
