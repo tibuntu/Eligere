@@ -2,12 +2,11 @@
   function postItem() 
     {    
       include 'vars.php';
-      $fullname = $_POST['a'];
-      $id = $_POST['b'];
-      $reg_date = $_POST['c'];
+      $name = $_POST['Name'];
+      $str = $_POST['Strength'];
 
-      $input = "INSERT INTO item (fullname)
-                VALUES ('$fullname')";
+      $input = "INSERT INTO item (Fullname, Strength)
+                VALUES ('$name', '$str')";
       $connection->query($input);
     }
 ?>

@@ -2,7 +2,7 @@
   function getItem()
   {
      include 'vars.php';
-     $sql = "SELECT * FROM item";
+     $sql = "SELECT Fullname, Strength, Image FROM item";
      $result = $connection->query($sql);
      $results = array ();
      header("Content-Type: application/json; charset=utf-8");
