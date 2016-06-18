@@ -4,10 +4,9 @@
       include 'vars.php';
       $name = $_POST['Name'];
       $str = $_POST['Strength'];
-      $img = $_POST['Image'];
 
-      $input = "INSERT INTO item (Fullname, Strength, Image)
-                VALUES ('$name', '$str', '$img')";
+      $input = "INSERT INTO item (Fullname, Strength)
+                VALUES ('$name', '$str')";
       $connection->query($input);
     }
 ?>
