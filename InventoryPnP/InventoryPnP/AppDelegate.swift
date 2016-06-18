@@ -11,6 +11,7 @@ import UIKit
 var items:NSArray = []
 var setData: [Int: String] = [
         0:"Name",
+        1:"Strength"
 ]
 
 var postURL: String = ""

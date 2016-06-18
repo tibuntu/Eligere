@@ -41,7 +41,19 @@ class ItemTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         let item = items[indexPath.row]
         
-        cell.nameLabel.text = item["fullname"] as? String
+        let imageUrl = "http://tico-kk.eu/phptry/images/\(item["Image"] as! String)"
+        
+        print(imageUrl)
+        
+        let url = NSURL(string: imageUrl)
+        
+        print(url)
+        
+        let data = NSData(contentsOfURL: url!)
+        
+        cell.nameLabel.text = item["Fullname"] as? String
+        cell.strengthLabel.text = item["Strength"] as? String
+        cell.itemImage.image = UIImage(data: data!)
         
         return cell
     }
