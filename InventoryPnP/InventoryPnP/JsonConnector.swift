@@ -15,7 +15,7 @@ func jsonGetItems() {
     
     print(data?.description)
     
-    items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
+    //items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
     
 }
 
@@ -28,18 +28,24 @@ func jsonGetItems() {
     
 }*/
 
-func jsonPostItem(fullname: String) -> Bool {
+func jsonPostItem(urlTrailer: String) -> Bool {
     
-    let url = NSURL(string: "http:/tico-kk.eu/api.php")
+    let url = NSURL(string: "http:/tico-kk.eu/api.php?getpost=postItem&\(urlTrailer)")
     let request = NSMutableURLRequest(URL: url!)
     
     let session = NSURLSession.sharedSession()
     
-    let postString = "a=\(fullname)"
+    let postString:NSString = "getpost=postItem&\(urlTrailer)"
+    let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+    
+    print("postString: \(postString)")
+    print("url: \(url)")
     
     request.HTTPMethod = "POST"
-    request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+    request.HTTPBody = postData
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    
+    print(request.HTTPBody)
     
     let task = session.dataTaskWithRequest(request)
     

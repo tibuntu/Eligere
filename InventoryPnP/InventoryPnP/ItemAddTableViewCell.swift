@@ -1,5 +1,5 @@
 //
-//  SetDataTableViewCell.swift
+//  ItemAddTableViewCell.swift
 //  InventoryPnP
 //
 //  Created by Krueger Nicolai on 04/06/16.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class SetDataTableViewCell: UITableViewCell {
+class ItemAddTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var insertTextField: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()

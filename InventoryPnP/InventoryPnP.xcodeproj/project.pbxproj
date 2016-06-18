@@ -14,7 +14,9 @@
 		C746D8991CFAE67E00F6323E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */; };
 		C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */; };
 		C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C746D89E1CFAFC0800F6323E /* JsonConnector.swift */; };
-		C766828A1D0309120067B5BA /* SetDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76682891D0309120067B5BA /* SetDataTableViewCell.swift */; };
+		C76682901D0362640067B5BA /* ItemAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C766828F1D0362640067B5BA /* ItemAddTableViewCell.swift */; };
+		C76682921D0363980067B5BA /* ItemAddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76682911D0363980067B5BA /* ItemAddTableViewController.swift */; };
+		C76682941D038A5C0067B5BA /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76682931D038A5C0067B5BA /* SetTableViewController.swift */; };
 		C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +30,9 @@
 		C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
 		C746D89E1CFAFC0800F6323E /* JsonConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonConnector.swift; sourceTree = "<group>"; };
-		C76682891D0309120067B5BA /* SetDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetDataTableViewCell.swift; sourceTree = "<group>"; };
+		C766828F1D0362640067B5BA /* ItemAddTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAddTableViewCell.swift; sourceTree = "<group>"; };
+		C76682911D0363980067B5BA /* ItemAddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemAddTableViewController.swift; sourceTree = "<group>"; };
+		C76682931D038A5C0067B5BA /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
 		C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemAddViewController.swift; path = ../ItemAddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,7 +50,6 @@
 		C746D87A1CFAE5E400F6323E = {
 			isa = PBXGroup;
 			children = (
-				C76682891D0309120067B5BA /* SetDataTableViewCell.swift */,
 				C746D8851CFAE5E400F6323E /* InventoryPnP */,
 				C746D8841CFAE5E400F6323E /* Products */,
 			);
@@ -69,9 +72,12 @@
 				C746D88F1CFAE5E500F6323E /* LaunchScreen.storyboard */,
 				C746D8921CFAE5E500F6323E /* Info.plist */,
 				C746D8981CFAE67E00F6323E /* ItemTableViewCell.swift */,
+				C766828F1D0362640067B5BA /* ItemAddTableViewCell.swift */,
 				C746D89A1CFAEB0500F6323E /* ItemTableViewController.swift */,
+				C76682911D0363980067B5BA /* ItemAddTableViewController.swift */,
 				C78079241CFB1B5F001A6857 /* ItemAddViewController.swift */,
 				C746D89E1CFAFC0800F6323E /* JsonConnector.swift */,
+				C76682931D038A5C0067B5BA /* SetTableViewController.swift */,
 			);
 			path = InventoryPnP;
 			sourceTree = "<group>";
@@ -147,11 +153,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76682901D0362640067B5BA /* ItemAddTableViewCell.swift in Sources */,
 				C746D8991CFAE67E00F6323E /* ItemTableViewCell.swift in Sources */,
+				C76682941D038A5C0067B5BA /* SetTableViewController.swift in Sources */,
 				C746D89B1CFAEB0500F6323E /* ItemTableViewController.swift in Sources */,
 				C78079251CFB1B5F001A6857 /* ItemAddViewController.swift in Sources */,
+				C76682921D0363980067B5BA /* ItemAddTableViewController.swift in Sources */,
 				C746D89F1CFAFC0800F6323E /* JsonConnector.swift in Sources */,
-				C766828A1D0309120067B5BA /* SetDataTableViewCell.swift in Sources */,
 				C746D8871CFAE5E400F6323E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

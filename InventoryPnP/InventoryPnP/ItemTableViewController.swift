@@ -74,7 +74,19 @@ class ItemTableViewController: UITableViewController {
     
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
-        jsonPostItem(itemName)
+        let sourceViewController = segue.sourceViewController as? ItemAddTableViewController
+        
+        itemName = ""
+        
+        for (nameId, value) in setData {
+        
+            let sourceTableViewCell = sourceViewController?.tableView.cellForRowAtIndexPath(NSIndexPath(index: nameId)) as? ItemAddTableViewCell
+            
+            itemName = "&\(value)=\(sourceTableViewCell?.nameLabel.text)"
+        
+        }
+        
+        jsonPostItem("a=\(itemName)")
         print(itemName)
         jsonGetItems()
 
