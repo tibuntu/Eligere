@@ -10,12 +10,26 @@ import Foundation
 
 func jsonGetItems() {
     
-    let url = NSURL(string: "http://tico-kk.eu/api.php?getpost=getItem")
+    let url = NSURL(string: "http://tico-kk.eu/phptry/api.php?getpost=getItem")
     let data = NSData(contentsOfURL: url!)
     
-    print(data?.description)
-    
-    items = try! NSJSONSerialization.JSONObjectWithData(data!, options:.MutableContainers) as! NSArray
+    do {
+        
+        if let data = data {
+            
+            items = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+            
+        } else {
+            
+            print("no data")
+            
+        }
+        
+    } catch let error as NSError {
+        
+        print(error)
+            
+    }
     
 }
 
