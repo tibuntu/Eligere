@@ -1,9 +1,10 @@
 <?php
   include 'vars.php';
-  include 'getItem.php';
-  include 'postItem.php';
-  include 'postSet.php';
-  include 'getSet.php';
+  include 'function.php';
+  #include 'getItem.php';
+  #include 'postItem.php';
+  #include 'postSet.php';
+  #include 'getSet.php';
   include '404.php';
   $uri = $_SERVER['QUERY_STRING'];
   $script = $_SERVER['SCRIPT_NAME'];
