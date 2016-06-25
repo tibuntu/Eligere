@@ -13,6 +13,10 @@ class SetTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        jsonGetSets()
+        
+        print("View load")
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,23 +33,25 @@ class SetTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return sets.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("SetTableViewCell", forIndexPath: indexPath) as! SetTableViewCell
 
-        // Configure the cell...
+        let set = sets[indexPath.row]
+        
+        cell.setLabel.text = set["Fullname"] as? String
+        
+        print(set["Keywords"] as? String)
 
         return cell
     }
-    */
 
     /*
 
@@ -71,14 +77,6 @@ class SetTableViewController: UITableViewController {
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
 
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
     }
     */
 

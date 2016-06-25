@@ -45,7 +45,9 @@ class ItemAddTableViewController: UITableViewController {
         
         if sender === saveButton {
             
-            for (index, name) in setData {
+            var index = 0
+            
+            for value in setData {
                 
                 let indexPath = NSIndexPath(forRow: index, inSection: 0)
             
@@ -53,8 +55,14 @@ class ItemAddTableViewController: UITableViewController {
             
                 if postURL != "" { postURL += "&" }
             
-                postURL += "\(name)=\(cell.insertTextField.text!)"
+                var valueString = cell.insertTextField.text!
+                
+                valueString = valueString.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                
+                postURL += "\(value)=\(valueString)"
             
+                index += 1
+                
             }
                 
             print(postURL)

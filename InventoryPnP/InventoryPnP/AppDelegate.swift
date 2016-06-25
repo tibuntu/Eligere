@@ -9,10 +9,12 @@
 import UIKit
 
 var items:NSArray = []
-var setData: [Int: String] = [
-        0:"Name",
-        1:"Strength"
-]
+//var itemData: [Int: String] = [
+//        0:"Name",
+//        1:"Strength"
+//]
+var sets:NSArray = []
+var setData:Array = ["Name", "Strength"]
 
 var postURL: String = ""
 

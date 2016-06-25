@@ -53,7 +53,7 @@ class ItemTableViewController: UITableViewController {
         
         cell.nameLabel.text = item["Fullname"] as? String
         cell.strengthLabel.text = item["Strength"] as? String
-        //cell.itemImage.image = UIImage(data: data!)
+        cell.itemImage.image = UIImage(data: data!)
         
         return cell
     }
