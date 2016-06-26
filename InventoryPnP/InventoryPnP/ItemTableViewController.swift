@@ -10,14 +10,16 @@ import UIKit
 
 class ItemTableViewController: UITableViewController {
     
+    @IBOutlet weak var categoryButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        jsonGetItems()
-        //jsonGetSetData()
+        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+        
+        jsonFilterItems(category)
         
         self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-
         
     }
     
@@ -31,7 +33,7 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return items.count
+        return sortedResults.count
         
     }
     
@@ -39,16 +41,12 @@ class ItemTableViewController: UITableViewController {
         
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
-        let item = items[indexPath.row]
+        let item = sortedResults[indexPath.row]
         
         let imageUrl = "http://tico-kk.eu/phptry/images/\(item["Image"] as! String)"
         
-        print(imageUrl)
-        
         let url = NSURL(string: imageUrl)
-        
-        print(url)
-        
+
         let data = NSData(contentsOfURL: url!)
         
         cell.nameLabel.text = item["Fullname"] as? String
@@ -61,9 +59,11 @@ class ItemTableViewController: UITableViewController {
     //MARK: - Refresh function
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-
-        jsonGetItems()
+        
         print("Refreshing...")
+        
+        jsonFilterItems(category)
+        
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -89,6 +89,10 @@ class ItemTableViewController: UITableViewController {
         jsonPostItem(postURL)
         
         postURL = ""
+        
+        jsonFilterItems(category)
+        
+        self.tableView.reloadData()
         
     }
     

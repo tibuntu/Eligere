@@ -9,12 +9,11 @@
 import UIKit
 
 var items:NSArray = []
-//var itemData: [Int: String] = [
-//        0:"Name",
-//        1:"Strength"
-//]
 var sets:NSArray = []
+var sortedResults:NSArray = []
 var setData:Array = ["Name", "Strength"]
+var categorys:Array = ["Swords", "Armor", "Utilities", "Shields", "Ressource", "Mothers"]
+var category: String = "Swords"
 
 var postURL: String = ""
 
@@ -26,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
         return true
     }
 

@@ -9,14 +9,18 @@
 import UIKit
 
 class ItemAddTableViewController: UITableViewController {
+
+    let categorys = ["Weapon", "Armor", "Utilities", "Shields", "Ressource"]
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        if category != "" {
+            
+        }
         
     }
 
