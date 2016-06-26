@@ -9,11 +9,14 @@
 import UIKit
 
 var items:NSArray = []
+var sortedItems:NSArray = []
 var sets:NSArray = []
-var sortedResults:NSArray = []
 var setData:Array = ["Name", "Strength"]
-var categorys:Array = ["Swords", "Armor", "Utilities", "Shields", "Ressource", "Mothers"]
-var category: String = "Swords"
+var categorys:Array = [String]()
+
+var category:String = "Swords"
+var setId: String = "5"
+
 
 var postURL: String = ""
 

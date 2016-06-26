@@ -10,7 +10,7 @@ import Foundation
 
 func jsonGetSets() {
     
-    let url = NSURL(string: "http://tico-kk.eu/phptry/api.php?getSet")
+    let url = NSURL(string: "http://tico-kk.eu/api.php?getSet")
     let data = NSData(contentsOfURL: url!)
     
     do {
@@ -18,8 +18,6 @@ func jsonGetSets() {
         if let data = data {
             
             sets = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
-            
-            print(sets)
             
         } else {
             
@@ -65,11 +63,11 @@ func jsonPostItem(urlTrailer: String) -> Bool {
 
 func jsonFilterItems(keyword: String) -> Bool {
     
-    let url = NSURL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)")
+    let url = NSURL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
     let request = NSMutableURLRequest(URL: url!)
     let session = NSURLSession.sharedSession()
     
-    let postString:NSString = "getComp&keywords=\(keyword)"
+    let postString:NSString = "getComp&keywords=\(keyword)&setid=\(setId)"
     let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
     
     request.HTTPMethod = "POST"
@@ -102,7 +100,7 @@ func jsonFilterItems(keyword: String) -> Bool {
                 items = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
                 
                 let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Fullname", ascending: true)
-                sortedResults = items.sortedArrayUsingDescriptors([descriptor])
+                sortedItems = items.sortedArrayUsingDescriptors([descriptor])
                 
             } else {
                 
@@ -124,6 +122,48 @@ func jsonFilterItems(keyword: String) -> Bool {
     task.resume()
     
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    
+    return true
+    
+}
+
+func jsonGetCategory() -> Bool {
+    
+    let url = NSURL(string: "http://tico-kk.eu/api.php?getCat")
+    let data = NSData(contentsOfURL: url!)
+    
+    do {
+        
+        if let data = data {
+            
+            let tmpCategorys = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+            
+            let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Category", ascending: true)
+            let sortedCategorys = tmpCategorys.sortedArrayUsingDescriptors([descriptor])
+            
+            categorys = []
+            
+            for value in sortedCategorys {
+                
+                let tmpCategory = value
+                
+                categorys.append(tmpCategory["Name"] as! String)
+                
+            }
+            
+            print(categorys)
+            
+        } else {
+            
+            print("no data")
+            
+        }
+        
+    } catch let error as NSError {
+        
+        print(error)
+        
+    }
     
     return true
     

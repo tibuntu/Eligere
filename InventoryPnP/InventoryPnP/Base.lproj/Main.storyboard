@@ -25,13 +25,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JiK-dA-gAx">
                                             <rect key="frame" x="97" y="8" width="495" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strength" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYS-L7-fxA">
                                             <rect key="frame" x="126" y="51.5" width="46" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kSh-Lt-WWN">
@@ -43,10 +43,11 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uzp-VO-903">
                                             <rect key="frame" x="97" y="51.5" width="27" height="14"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="kSh-Lt-WWN" firstAttribute="leading" secondItem="zUT-fr-Yae" secondAttribute="leadingMargin" constant="-8" id="8Vd-d4-snE"/>
                                         <constraint firstItem="JiK-dA-gAx" firstAttribute="leading" secondItem="kSh-Lt-WWN" secondAttribute="trailing" constant="8" id="Krh-W2-P6r"/>
@@ -249,6 +250,7 @@
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDb-XK-i2X">
                                 <rect key="frame" x="20" y="64" width="560" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Nps-pe-kcK" id="ymS-yW-JIS"/>
                                     <outlet property="delegate" destination="Nps-pe-kcK" id="2IO-wT-Ilo"/>
@@ -264,12 +266,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KDb-XK-i2X" firstAttribute="top" secondItem="FBP-b4-rjK" secondAttribute="bottom" id="VN3-Bp-F0Y"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ojq-9n-ody" secondAttribute="trailing" id="Vaw-MW-wgU"/>
-                            <constraint firstItem="KDb-XK-i2X" firstAttribute="leading" secondItem="Nps-pe-kcK" secondAttribute="leadingMargin" id="YeG-WX-cFk"/>
-                            <constraint firstItem="ojq-9n-ody" firstAttribute="top" secondItem="KDb-XK-i2X" secondAttribute="bottom" constant="30" id="cM8-Oe-HpN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KDb-XK-i2X" secondAttribute="trailing" id="d98-7v-dP5"/>
-                            <constraint firstItem="ojq-9n-ody" firstAttribute="leading" secondItem="Nps-pe-kcK" secondAttribute="leadingMargin" id="wbo-uP-Wah"/>
+                            <constraint firstItem="ojq-9n-ody" firstAttribute="leading" secondItem="Nps-pe-kcK" secondAttribute="leadingMargin" id="DxO-IR-j55"/>
+                            <constraint firstItem="KDb-XK-i2X" firstAttribute="top" secondItem="FBP-b4-rjK" secondAttribute="bottom" id="ihZ-jx-cbs"/>
+                            <constraint firstItem="ojq-9n-ody" firstAttribute="top" secondItem="KDb-XK-i2X" secondAttribute="bottom" constant="30" id="ndy-VG-UUF"/>
+                            <constraint firstItem="KDb-XK-i2X" firstAttribute="leading" secondItem="Nps-pe-kcK" secondAttribute="leadingMargin" id="tXp-SP-ddZ"/>
+                            <constraint firstItem="KDb-XK-i2X" firstAttribute="trailing" secondItem="Nps-pe-kcK" secondAttribute="trailingMargin" id="utu-ab-uVW"/>
+                            <constraint firstItem="ojq-9n-ody" firstAttribute="trailing" secondItem="Nps-pe-kcK" secondAttribute="trailingMargin" id="yzs-AO-kyX"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -330,6 +332,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="setLabel" destination="CDp-xj-pvS" id="LrS-OD-mvT"/>
+                                    <segue destination="U5o-9r-EGZ" kind="presentation" identifier="setSet" id="KxD-pq-FNw"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -370,7 +373,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6Up-zV-c9B"/>
         <segue reference="ECm-ev-Rgo"/>
+        <segue reference="6Up-zV-c9B"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -46,7 +46,7 @@ class SetTableViewController: UITableViewController {
 
         let set = sets[indexPath.row]
         
-        cell.setLabel.text = set["Fullname"] as? String
+        cell.setLabel.text = "\(set["Fullname"] as! String) (ID: \(set["ID"] as! String))"
         
         print(set["Keywords"] as? String)
 
@@ -80,14 +80,22 @@ class SetTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let selectedSetCell = sender as? SetTableViewCell {
+            
+            let indexPath = tableView.indexPathForCell(selectedSetCell)!
+            let selectedSet = sets[indexPath.row]
+            
+            print(selectedSet)
+            
+            setId = selectedSet["ID"] as! String
+            
+        }
     }
-    */
 
 }

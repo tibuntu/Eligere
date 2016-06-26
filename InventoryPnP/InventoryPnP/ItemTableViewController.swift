@@ -33,7 +33,7 @@ class ItemTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return sortedResults.count
+        return sortedItems.count
         
     }
     
@@ -41,9 +41,9 @@ class ItemTableViewController: UITableViewController {
         
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
-        let item = sortedResults[indexPath.row]
+        let item = sortedItems[indexPath.row]
         
-        let imageUrl = "http://tico-kk.eu/phptry/images/\(item["Image"] as! String)"
+        let imageUrl = "http://tico-kk.eu/images/\(item["Image"] as! String)"
         
         let url = NSURL(string: imageUrl)
 

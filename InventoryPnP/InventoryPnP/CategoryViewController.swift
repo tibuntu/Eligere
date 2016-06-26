@@ -18,6 +18,8 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.categoryPicker.dataSource = self;
         self.categoryPicker.delegate = self;
         
+        jsonGetCategory()
+        
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -28,7 +30,7 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return categorys.count;
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return categorys[row]
     }
 
