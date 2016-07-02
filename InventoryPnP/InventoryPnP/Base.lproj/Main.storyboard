@@ -65,6 +65,7 @@
                                     <outlet property="itemImage" destination="kSh-Lt-WWN" id="DQ9-cE-JQG"/>
                                     <outlet property="nameLabel" destination="JiK-dA-gAx" id="qxl-rX-Np5"/>
                                     <outlet property="strengthLabel" destination="Uzp-VO-903" id="FiJ-Kh-g9Z"/>
+                                    <segue destination="oJI-ma-tZC" kind="presentation" identifier="editItem" id="RAf-yd-zMl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -85,12 +86,12 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Weapons"/>
                             <connections>
-                                <segue destination="Ewc-VO-JgL" kind="show" id="UxA-fK-HCs"/>
+                                <segue destination="Ewc-VO-JgL" kind="show" identifier="selectCategoryFilterItems" id="UxA-fK-HCs"/>
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7KB-kB-dot">
                             <connections>
-                                <segue destination="oJI-ma-tZC" kind="presentation" id="fA0-P4-wIH"/>
+                                <segue destination="oJI-ma-tZC" kind="presentation" identifier="addItem" id="fA0-P4-wIH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -220,6 +221,14 @@
                                 <segue destination="uuY-3Q-wBK" kind="unwind" unwindAction="cancelToItemTable:" id="4a7-XQ-GCA"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MmX-Aa-OHn">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Choose category"/>
+                            <connections>
+                                <segue destination="mLN-hL-Zbn" kind="show" id="Sst-PS-DSU"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="sv5-8c-oAu">
                             <connections>
                                 <segue destination="uuY-3Q-wBK" kind="unwind" unwindAction="saveItemToDB:" id="Uhw-SS-KpN"/>
@@ -228,6 +237,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="iN8-3Q-zej" id="hDz-QP-t2K"/>
+                        <outlet property="categoryButton" destination="MmX-Aa-OHn" id="J0d-KS-w1m"/>
                         <outlet property="saveButton" destination="sv5-8c-oAu" id="1bF-1S-teO"/>
                     </connections>
                 </tableViewController>
@@ -249,7 +259,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KDb-XK-i2X">
-                                <rect key="frame" x="20" y="64" width="560" height="216"/>
+                                <rect key="frame" x="20" y="20" width="560" height="216"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Nps-pe-kcK" id="ymS-yW-JIS"/>
@@ -257,7 +267,7 @@
                                 </connections>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="setCategory" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-9n-ody">
-                                <rect key="frame" x="20" y="310" width="560" height="30"/>
+                                <rect key="frame" x="20" y="266" width="560" height="30"/>
                                 <state key="normal" title="SET"/>
                                 <connections>
                                     <segue destination="rSm-5g-pti" kind="presentation" identifier="setCategory" id="6Up-zV-c9B"/>
@@ -282,7 +292,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ss-Qv-PeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="-444"/>
+            <point key="canvasLocation" x="1821" y="-486"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3tL-gq-Ief">
@@ -371,9 +381,58 @@
             </objects>
             <point key="canvasLocation" x="247" y="1087"/>
         </scene>
+        <!--Category View Controller-->
+        <scene sceneID="toa-7L-bMZ">
+            <objects>
+                <viewController id="mLN-hL-Zbn" customClass="CategoryViewController" customModule="InventoryPnP" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="COI-tD-IIb"/>
+                        <viewControllerLayoutGuide type="bottom" id="NKQ-kp-6jW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cog-6G-1z7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTg-4I-sya">
+                                <rect key="frame" x="20" y="20" width="560" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Cog-6G-1z7" id="Qx1-p5-kIB"/>
+                                    <outlet property="delegate" destination="Cog-6G-1z7" id="eiQ-A3-wiL"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="setCategory" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfz-Wb-xUT">
+                                <rect key="frame" x="20" y="266" width="560" height="30"/>
+                                <state key="normal" title="SET"/>
+                                <connections>
+                                    <segue destination="oJI-ma-tZC" kind="presentation" id="mbl-x4-y7Y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pTg-4I-sya" firstAttribute="top" secondItem="COI-tD-IIb" secondAttribute="bottom" id="DFR-C1-yS0"/>
+                            <constraint firstItem="pTg-4I-sya" firstAttribute="leading" secondItem="Cog-6G-1z7" secondAttribute="leadingMargin" id="FF8-3l-FfH"/>
+                            <constraint firstItem="Qfz-Wb-xUT" firstAttribute="trailing" secondItem="Cog-6G-1z7" secondAttribute="trailingMargin" id="VYu-A4-hdq"/>
+                            <constraint firstItem="Qfz-Wb-xUT" firstAttribute="top" secondItem="pTg-4I-sya" secondAttribute="bottom" constant="30" id="ZOp-rp-qyJ"/>
+                            <constraint firstItem="pTg-4I-sya" firstAttribute="trailing" secondItem="Cog-6G-1z7" secondAttribute="trailingMargin" id="bh3-jH-sFE"/>
+                            <constraint firstItem="Qfz-Wb-xUT" firstAttribute="leading" secondItem="Cog-6G-1z7" secondAttribute="leadingMargin" id="j8p-Yq-4EY"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="categoryPicker" destination="pTg-4I-sya" id="eM4-c0-jqr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQX-zo-gdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="-486"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ECm-ev-Rgo"/>
         <segue reference="6Up-zV-c9B"/>
+        <segue reference="ECm-ev-Rgo"/>
+        <segue reference="mbl-x4-y7Y"/>
     </inferredMetricsTieBreakers>
 </document>

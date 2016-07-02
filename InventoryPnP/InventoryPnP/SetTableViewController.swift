@@ -46,7 +46,7 @@ class SetTableViewController: UITableViewController {
 
         let set = sets[indexPath.row]
         
-        cell.setLabel.text = "\(set["Fullname"] as! String) (ID: \(set["ID"] as! String))"
+        cell.setLabel.text = "\(set["Fullname"] as! String) (ID: \(set["id"] as! String))"
         
         print(set["Keywords"] as? String)
 
@@ -93,7 +93,7 @@ class SetTableViewController: UITableViewController {
             
             print(selectedSet)
             
-            setId = selectedSet["ID"] as! String
+            setId = selectedSet["id"] as! String
             
         }
     }

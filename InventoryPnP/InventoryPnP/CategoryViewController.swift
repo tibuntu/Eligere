@@ -14,7 +14,7 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.categoryPicker.dataSource = self;
         self.categoryPicker.delegate = self;
         

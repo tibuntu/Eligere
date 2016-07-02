@@ -35,9 +35,37 @@ func jsonGetSets() {
 
 func jsonPostItem(urlTrailer: String) -> Bool {
     
-    let fullUrlTrailer = "Category=\(category)&\(urlTrailer)"
+    let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
     let url = NSURL(string: "http:/tico-kk.eu/api.php?postItem&\(fullUrlTrailer)")
+    let request = NSMutableURLRequest(URL: url!)
+    
+    let session = NSURLSession.sharedSession()
+    
+    let postString:NSString = "postItem&\(fullUrlTrailer)"
+    let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+    
+    request.HTTPMethod = "POST"
+    request.HTTPBody = postData
+    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    
+    print(request.HTTPBody)
+    
+    print(url)
+    
+    let task = session.dataTaskWithRequest(request)
+    
+    task.resume()
+    
+    return true
+    
+}
+
+func jsonEditItem(urlTrailer: String) -> Bool {
+    
+    let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
+    
+    let url = NSURL(string: "http:/tico-kk.eu/api.php?editItem&\(fullUrlTrailer)")
     let request = NSMutableURLRequest(URL: url!)
     
     let session = NSURLSession.sharedSession()
@@ -78,6 +106,11 @@ func jsonFilterItems(keyword: String) -> Bool {
     
     print("URL: \(url)")
     
+    sortedItems = []
+    items = []
+    
+    print("ITEMS DATA BEFORE API: \(items)")
+    
     let task = session.dataTaskWithRequest(request) {
         
         (let data, let response, let error) in
@@ -98,6 +131,8 @@ func jsonFilterItems(keyword: String) -> Bool {
             if let data = data {
                 
                 items = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+                
+                print("ITEMS IN API: \(items)")
                 
                 let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Fullname", ascending: true)
                 sortedItems = items.sortedArrayUsingDescriptors([descriptor])
@@ -129,7 +164,7 @@ func jsonFilterItems(keyword: String) -> Bool {
 
 func jsonGetCategory() -> Bool {
     
-    let url = NSURL(string: "http://tico-kk.eu/api.php?getCat")
+    let url = NSURL(string: "http://tico-kk.eu/api.php?getKeywords")
     let data = NSData(contentsOfURL: url!)
     
     do {
@@ -147,8 +182,36 @@ func jsonGetCategory() -> Bool {
                 
                 let tmpCategory = value
                 
-                categorys.append(tmpCategory["Name"] as! String)
-                
+                if mode == "addItem" && category == "" {
+                    
+                    if tmpCategory["Name"] as! String == "All" {
+                        
+                        // Do nothing
+                        
+                    }
+                    
+                    else {
+                        
+                        categorys.append(tmpCategory["Name"] as! String)
+                        
+                    }
+                    
+                } else {
+                    
+                    print("TMP CATEGORY: \(tmpCategory)")
+                    
+                    if tmpCategory["Name"] as! String == "All" {
+                        
+                        // Do nothing
+                        
+                    } else {
+                    
+                        categorys.append(tmpCategory["Name"] as! String)
+                        
+                    }
+                    
+                }
+                        
             }
             
             print(categorys)

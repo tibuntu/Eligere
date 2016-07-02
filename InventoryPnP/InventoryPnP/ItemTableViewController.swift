@@ -86,13 +86,50 @@ class ItemTableViewController: UITableViewController {
     
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
-        jsonPostItem(postURL)
+        print("CURRENT MODE: \(mode)")
+        
+        if mode == "addItem" {
+            
+            print("ADDING ITEM")
+            jsonPostItem(postURL)
+            
+        } else if mode == "editItem" {
+            
+            print("EDITING ITEM")
+            jsonEditItem(postURL)
+            
+        }
+        
+        mode = ""
         
         postURL = ""
         
         jsonFilterItems(category)
         
         self.tableView.reloadData()
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "editItem" {
+            
+            mode = "editItem"
+            
+            if let selectedSetCell = sender as? ItemTableViewCell {
+                
+                let indexPath = tableView.indexPathForCell(selectedSetCell)!
+                selectedItem = items[indexPath.row] as! NSDictionary
+                
+                print("SELECTED ITEM: \(selectedItem)")
+                
+            }
+            
+        } else if segue.identifier == "addItem" {
+            
+            mode = "addItem"
+            
+        }
         
     }
     

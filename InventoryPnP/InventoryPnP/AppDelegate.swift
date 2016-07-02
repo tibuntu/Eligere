@@ -8,17 +8,30 @@
 
 import UIKit
 
+// VAR ITEMS
+
 var items:NSArray = []
 var sortedItems:NSArray = []
+var selectedItem:NSDictionary = [:]
+
+// VAR SETS
+
 var sets:NSArray = []
-var setData:Array = ["Name", "Strength"]
+var setData:Array = ["id", "Fullname", "Strength"]
+var setId: String = ""
+
+// VAR CATEGORIES
+
 var categorys:Array = [String]()
+var category:String = "Various"
 
-var category:String = "Swords"
-var setId: String = "5"
-
+// VAR API
 
 var postURL: String = ""
+
+// VAR NAVIGATION
+
+var mode: String = ""
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

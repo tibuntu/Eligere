@@ -14,11 +14,18 @@ class ItemAddTableViewController: UITableViewController {
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var categoryButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if category != "" {
+        if category != "" && category != "All" {
+            
+            self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+            
+        } else {
+            
+            self.categoryButton.setTitle("Choose category", forState: UIControlState.Normal)
             
         }
         
@@ -42,6 +49,14 @@ class ItemAddTableViewController: UITableViewController {
 
         cell.nameLabel.text = setData[indexPath.row]
         
+        if mode == "editItem" {
+            
+            let selectItem = selectedItem[setData[indexPath.row]] as! String
+            
+            cell.insertTextField.text = selectItem
+            
+        }
+        
         return cell
     }
     
@@ -54,7 +69,7 @@ class ItemAddTableViewController: UITableViewController {
             for value in setData {
                 
                 let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            
+                
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ItemAddTableViewCell
             
                 if postURL != "" { postURL += "&" }
