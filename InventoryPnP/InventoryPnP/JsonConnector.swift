@@ -8,6 +8,10 @@
 
 import Foundation
 
+
+
+class jsonConnector {
+
 func jsonGetSets() {
     
     let url = NSURL(string: "http://tico-kk.eu/api.php?getSet")
@@ -49,10 +53,8 @@ func jsonPostItem(urlTrailer: String) -> Bool {
     request.HTTPBody = postData
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
-    print(request.HTTPBody)
-    
-    print(url)
-    
+    print("Posting item (URL: \(url))...")
+
     let task = session.dataTaskWithRequest(request)
     
     task.resume()
@@ -70,16 +72,14 @@ func jsonEditItem(urlTrailer: String) -> Bool {
     
     let session = NSURLSession.sharedSession()
     
-    let postString:NSString = "postItem&\(fullUrlTrailer)"
+    let postString:NSString = "editItem&\(fullUrlTrailer)"
     let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
     
     request.HTTPMethod = "POST"
     request.HTTPBody = postData
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
-    print(request.HTTPBody)
-    
-    print(url)
+    print("Editing item (URL: \(url))...")
     
     let task = session.dataTaskWithRequest(request)
     
@@ -89,7 +89,7 @@ func jsonEditItem(urlTrailer: String) -> Bool {
     
 }
 
-func jsonFilterItems(keyword: String) -> Bool {
+func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
     
     let url = NSURL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
     let request = NSMutableURLRequest(URL: url!)
@@ -102,14 +102,12 @@ func jsonFilterItems(keyword: String) -> Bool {
     request.HTTPBody = postData
     request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
     
-    let semaphore = dispatch_semaphore_create(0)
-    
-    print("URL: \(url)")
+    print("Loading items (URL: \(url))...")
     
     sortedItems = []
     items = []
     
-    print("ITEMS DATA BEFORE API: \(items)")
+    let semaphore = dispatch_semaphore_create(0)
     
     let task = session.dataTaskWithRequest(request) {
         
@@ -117,14 +115,13 @@ func jsonFilterItems(keyword: String) -> Bool {
         
         guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
             
-            print("DATA TASK ERROR \(error)")
+            print("FAILED LOADING DATA (PHP ERROR):")
+            print(error)
             return
             
         }
         
-        dispatch_semaphore_signal(semaphore)
-        
-        let dataString = NSString(data: data!, encoding: NSUTF8StringEncoding)
+        //dispatch_semaphore_signal(semaphore)
         
         do {
             
@@ -132,33 +129,37 @@ func jsonFilterItems(keyword: String) -> Bool {
                 
                 items = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
                 
-                print("ITEMS IN API: \(items)")
-                
                 let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Fullname", ascending: true)
+                
                 sortedItems = items.sortedArrayUsingDescriptors([descriptor])
                 
             } else {
                 
-                print("no data")
+                print("LOADING DATA FAILED (NO DATA):")
+                print(data)
                 
             }
             
+            dispatch_semaphore_signal(semaphore)
+            
         } catch let error as NSError {
             
-            print("POST PHP ERROR: \(error)")
+            print("LOADING DATA FAILED (POST PHP ERROR):")
+            print(error)
+            
+            dispatch_semaphore_signal(semaphore)
             
         }
         
-        print("DATA STRING: \(dataString)")
-        print("RESPONSE: \(response)")
+        print("Response: \(response)")
+        
+        completion(result: "loaded data")
         
     }
     
     task.resume()
     
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
-    
-    return true
     
 }
 
@@ -182,39 +183,17 @@ func jsonGetCategory() -> Bool {
                 
                 let tmpCategory = value
                 
-                if mode == "addItem" && category == "" {
-                    
-                    if tmpCategory["Name"] as! String == "All" {
+                if mode != "" && tmpCategory["Name"] as! String == "All" {
                         
                         // Do nothing
                         
-                    }
-                    
-                    else {
-                        
-                        categorys.append(tmpCategory["Name"] as! String)
-                        
-                    }
-                    
                 } else {
-                    
-                    print("TMP CATEGORY: \(tmpCategory)")
-                    
-                    if tmpCategory["Name"] as! String == "All" {
                         
-                        // Do nothing
-                        
-                    } else {
-                    
                         categorys.append(tmpCategory["Name"] as! String)
                         
-                    }
-                    
                 }
-                        
+                
             }
-            
-            print(categorys)
             
         } else {
             
@@ -229,5 +208,7 @@ func jsonGetCategory() -> Bool {
     }
     
     return true
+    
+    }
     
 }

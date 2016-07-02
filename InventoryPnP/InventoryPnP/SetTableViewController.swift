@@ -13,7 +13,7 @@ class SetTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        jsonGetSets()
+        jsonConnector().jsonGetSets()
         
         print("View load")
         

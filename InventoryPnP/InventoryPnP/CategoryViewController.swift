@@ -18,7 +18,11 @@ class CategoryViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.categoryPicker.dataSource = self;
         self.categoryPicker.delegate = self;
         
-        jsonGetCategory()
+        print("Loading categories...")
+        
+        jsonConnector().jsonGetCategory()
+        
+        print("Loaded categories")
         
     }
     

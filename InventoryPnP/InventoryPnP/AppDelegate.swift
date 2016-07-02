@@ -17,7 +17,7 @@ var selectedItem:NSDictionary = [:]
 // VAR SETS
 
 var sets:NSArray = []
-var setData:Array = ["id", "Fullname", "Strength"]
+var setData:Array = ["id", "Fullname", "Strength", "SetID"]
 var setId: String = ""
 
 // VAR CATEGORIES

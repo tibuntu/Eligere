@@ -17,7 +17,11 @@ class ItemTableViewController: UITableViewController {
         
         self.categoryButton.setTitle(category, forState: UIControlState.Normal)
         
-        jsonFilterItems(category)
+        let r = jsonConnector()
+        
+        r.jsonFilterItems(category) {_ in
+            
+        }
         
         self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
@@ -40,7 +44,9 @@ class ItemTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ItemTableViewCell"
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
+        
         let item = sortedItems[indexPath.row]
         
         let imageUrl = "http://tico-kk.eu/images/\(item["Image"] as! String)"
@@ -50,7 +56,9 @@ class ItemTableViewController: UITableViewController {
         let data = NSData(contentsOfURL: url!)
         
         cell.nameLabel.text = item["Fullname"] as? String
+        
         cell.strengthLabel.text = item["Strength"] as? String
+        
         cell.itemImage.image = UIImage(data: data!)
         
         return cell
@@ -62,41 +70,47 @@ class ItemTableViewController: UITableViewController {
         
         print("Refreshing...")
         
-        jsonFilterItems(category)
+        let r = jsonConnector()
+        
+        r.jsonFilterItems(category) {_ in
+            
+        }
         
         self.tableView.reloadData()
+        
+        print("...refreshed!")
+        
         refreshControl.endRefreshing()
-    }
-    
-    //MARK: - Actions
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        //selectedItem = indexPath.row
-        
     }
     
     //MARK: - Navigation
     
     @IBAction func cancelToItemTable(segue: UIStoryboardSegue) {
         
+        let r = jsonConnector()
         
+        r.jsonFilterItems(category) {_ in
+            
+        }
+        
+        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+        
+        self.tableView.reloadData()
         
     }
     
     @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
         
-        print("CURRENT MODE: \(mode)")
-        
         if mode == "addItem" {
             
-            print("ADDING ITEM")
-            jsonPostItem(postURL)
+            print("Adding item...")
+            
+            jsonConnector().jsonPostItem(postURL)
             
         } else if mode == "editItem" {
             
-            print("EDITING ITEM")
-            jsonEditItem(postURL)
+            print("Editing item...")
+            jsonConnector().jsonEditItem(postURL)
             
         }
         
@@ -104,7 +118,13 @@ class ItemTableViewController: UITableViewController {
         
         postURL = ""
         
-        jsonFilterItems(category)
+        let r = jsonConnector()
+        
+        r.jsonFilterItems(category) {_ in
+            
+        }
+        
+        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
         
         self.tableView.reloadData()
         
@@ -120,8 +140,6 @@ class ItemTableViewController: UITableViewController {
                 
                 let indexPath = tableView.indexPathForCell(selectedSetCell)!
                 selectedItem = items[indexPath.row] as! NSDictionary
-                
-                print("SELECTED ITEM: \(selectedItem)")
                 
             }
             

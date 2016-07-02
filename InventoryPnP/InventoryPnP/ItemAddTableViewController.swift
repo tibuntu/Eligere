@@ -83,8 +83,6 @@ class ItemAddTableViewController: UITableViewController {
                 index += 1
                 
             }
-                
-            print(postURL)
             
         }
         
