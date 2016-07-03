@@ -141,6 +141,8 @@ class ItemTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForCell(selectedSetCell)!
                 selectedItem = items[indexPath.row] as! NSDictionary
                 
+                print("SELECTED CELL")
+                
             }
             
         } else if segue.identifier == "addItem" {

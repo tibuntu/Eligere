@@ -117,6 +117,9 @@ func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
             
             print("FAILED LOADING DATA (PHP ERROR):")
             print(error)
+            
+            dispatch_semaphore_signal(semaphore)
+            
             return
             
         }
@@ -188,8 +191,9 @@ func jsonGetCategory() -> Bool {
                         // Do nothing
                         
                 } else {
-                        
-                        categorys.append(tmpCategory["Name"] as! String)
+                    
+                    print("Append \(tmpCategory["Name"] as! String)")
+                    categorys.append(tmpCategory["Name"] as! String)
                         
                 }
                 

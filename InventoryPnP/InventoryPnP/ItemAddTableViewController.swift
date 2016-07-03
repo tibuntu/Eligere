@@ -10,7 +10,7 @@ import UIKit
 
 class ItemAddTableViewController: UITableViewController {
 
-    let categorys = ["Weapon", "Armor", "Utilities", "Shields", "Ressource"]
+    let categorys = []
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -18,6 +18,8 @@ class ItemAddTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Building view...")
         
         if category != "" && category != "All" {
             
@@ -51,9 +53,15 @@ class ItemAddTableViewController: UITableViewController {
         
         if mode == "editItem" {
             
-            let selectItem = selectedItem[setData[indexPath.row]] as! String
+            print("Building cells...")
             
-            cell.insertTextField.text = selectItem
+            let selectItem = selectedItem[setData[indexPath.row]] as? String
+            
+            if selectItem != nil {
+                
+                cell.insertTextField.text = selectItem
+                
+            }
             
         }
         
