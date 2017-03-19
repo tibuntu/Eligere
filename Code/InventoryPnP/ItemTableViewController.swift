@@ -15,7 +15,7 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+        self.categoryButton.setTitle(category, for: UIControlState())
         
         let r = jsonConnector()
         
@@ -23,37 +23,37 @@ class ItemTableViewController: UITableViewController {
             
         }
         
-        self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(ItemTableViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
         
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return sortedItems.count
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ItemTableViewCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ItemTableViewCell
         
         let item = sortedItems[indexPath.row]
         
         let imageUrl = "http://tico-kk.eu/images/\(item["Image"] as! String)"
         
-        let url = NSURL(string: imageUrl)
+        let url = URL(string: imageUrl)
 
-        let data = NSData(contentsOfURL: url!)
+        let data = try? Data(contentsOf: url!)
         
         cell.nameLabel.text = item["Fullname"] as? String
         
@@ -66,7 +66,7 @@ class ItemTableViewController: UITableViewController {
     
     //MARK: - Refresh function
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         print("Refreshing...")
         
@@ -85,7 +85,7 @@ class ItemTableViewController: UITableViewController {
     
     //MARK: - Navigation
     
-    @IBAction func cancelToItemTable(segue: UIStoryboardSegue) {
+    @IBAction func cancelToItemTable(_ segue: UIStoryboardSegue) {
         
         let r = jsonConnector()
         
@@ -93,13 +93,13 @@ class ItemTableViewController: UITableViewController {
             
         }
         
-        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+        self.categoryButton.setTitle(category, for: UIControlState())
         
         self.tableView.reloadData()
         
     }
     
-    @IBAction func saveItemToDB(segue: UIStoryboardSegue) {
+    @IBAction func saveItemToDB(_ segue: UIStoryboardSegue) {
         
         if mode == "addItem" {
             
@@ -124,13 +124,13 @@ class ItemTableViewController: UITableViewController {
             
         }
         
-        self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+        self.categoryButton.setTitle(category, for: UIControlState())
         
         self.tableView.reloadData()
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "editItem" {
             
@@ -138,7 +138,7 @@ class ItemTableViewController: UITableViewController {
             
             if let selectedSetCell = sender as? ItemTableViewCell {
                 
-                let indexPath = tableView.indexPathForCell(selectedSetCell)!
+                let indexPath = tableView.indexPath(for: selectedSetCell)!
                 selectedItem = items[indexPath.row] as! NSDictionary
                 
                 print("SELECTED CELL")

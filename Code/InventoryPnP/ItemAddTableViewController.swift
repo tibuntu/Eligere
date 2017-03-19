@@ -23,11 +23,11 @@ class ItemAddTableViewController: UITableViewController {
         
         if category != "" && category != "All" {
             
-            self.categoryButton.setTitle(category, forState: UIControlState.Normal)
+            self.categoryButton.setTitle(category, for: UIControlState())
             
         } else {
             
-            self.categoryButton.setTitle("Choose category", forState: UIControlState.Normal)
+            self.categoryButton.setTitle("Choose category", for: UIControlState())
             
         }
         
@@ -35,19 +35,19 @@ class ItemAddTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
 
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return setData.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> ItemAddTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ItemAddTableViewCell", forIndexPath: indexPath) as! ItemAddTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> ItemAddTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemAddTableViewCell", for: indexPath) as! ItemAddTableViewCell
 
         cell.nameLabel.text = setData[indexPath.row]
         
@@ -68,7 +68,7 @@ class ItemAddTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if sender === saveButton {
             
@@ -76,15 +76,15 @@ class ItemAddTableViewController: UITableViewController {
             
             for value in setData {
                 
-                let indexPath = NSIndexPath(forRow: index, inSection: 0)
+                let indexPath = IndexPath(row: index, section: 0)
                 
-                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! ItemAddTableViewCell
+                let cell = self.tableView.cellForRow(at: indexPath) as! ItemAddTableViewCell
             
                 if postURL != "" { postURL += "&" }
             
                 var valueString = cell.insertTextField.text!
                 
-                valueString = valueString.stringByReplacingOccurrencesOfString(" ", withString: "+")
+                valueString = valueString.replacingOccurrences(of: " ", with: "+")
                 
                 postURL += "\(value)=\(valueString)"
             

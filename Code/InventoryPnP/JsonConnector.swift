@@ -14,14 +14,14 @@ class jsonConnector {
 
 func jsonGetSets() {
     
-    let url = NSURL(string: "http://tico-kk.eu/api.php?getSet")
-    let data = NSData(contentsOfURL: url!)
+    let url = URL(string: "http://tico-kk.eu/api.php?getSet")
+    let data = try? Data(contentsOf: url!)
     
     do {
         
         if let data = data {
             
-            sets = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+            sets = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
             
         } else {
             
@@ -37,25 +37,25 @@ func jsonGetSets() {
     
 }
 
-func jsonPostItem(urlTrailer: String) -> Bool {
+func jsonPostItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = NSURL(string: "http:/tico-kk.eu/api.php?postItem&\(fullUrlTrailer)")
-    let request = NSMutableURLRequest(URL: url!)
+    let url = URL(string: "http:/tico-kk.eu/api.php?postItem&\(fullUrlTrailer)")
+    let request = NSMutableURLRequest(url: url!)
     
-    let session = NSURLSession.sharedSession()
+    let session = URLSession.shared
     
-    let postString:NSString = "postItem&\(fullUrlTrailer)"
-    let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+    let postString:NSString = "postItem&\(fullUrlTrailer)" as NSString
+    let postData = postString.data(using: String.Encoding.ascii.rawValue)!
     
-    request.HTTPMethod = "POST"
-    request.HTTPBody = postData
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    request.httpMethod = "POST"
+    request.httpBody = postData
+    request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     
     print("Posting item (URL: \(url))...")
 
-    let task = session.dataTaskWithRequest(request)
+    let task = session.dataTask(with: request)
     
     task.resume()
     
@@ -63,25 +63,25 @@ func jsonPostItem(urlTrailer: String) -> Bool {
     
 }
 
-func jsonEditItem(urlTrailer: String) -> Bool {
+func jsonEditItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = NSURL(string: "http:/tico-kk.eu/api.php?editItem&\(fullUrlTrailer)")
-    let request = NSMutableURLRequest(URL: url!)
+    let url = URL(string: "http:/tico-kk.eu/api.php?editItem&\(fullUrlTrailer)")
+    let request = NSMutableURLRequest(url: url!)
     
-    let session = NSURLSession.sharedSession()
+    let session = URLSession.shared
     
-    let postString:NSString = "editItem&\(fullUrlTrailer)"
-    let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+    let postString:NSString = "editItem&\(fullUrlTrailer)" as NSString
+    let postData = postString.data(using: String.Encoding.ascii.rawValue)!
     
-    request.HTTPMethod = "POST"
-    request.HTTPBody = postData
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    request.httpMethod = "POST"
+    request.httpBody = postData
+    request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     
     print("Editing item (URL: \(url))...")
     
-    let task = session.dataTaskWithRequest(request)
+    let task = session.dataTask(with: request)
     
     task.resume()
     
@@ -89,36 +89,36 @@ func jsonEditItem(urlTrailer: String) -> Bool {
     
 }
 
-func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
+func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String) -> Void) {
     
-    let url = NSURL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
-    let request = NSMutableURLRequest(URL: url!)
-    let session = NSURLSession.sharedSession()
+    let url = URL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
+    let request = NSMutableURLRequest(url: url!)
+    let session = URLSession.shared
     
-    let postString:NSString = "getComp&keywords=\(keyword)&setid=\(setId)"
-    let postData = postString.dataUsingEncoding(NSASCIIStringEncoding)!
+    let postString:NSString = "getComp&keywords=\(keyword)&setid=\(setId)" as NSString
+    let postData = postString.data(using: String.Encoding.ascii.rawValue)!
     
-    request.HTTPMethod = "POST"
-    request.HTTPBody = postData
-    request.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData
+    request.httpMethod = "POST"
+    request.httpBody = postData
+    request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     
     print("Loading items (URL: \(url))...")
     
     sortedItems = []
     items = []
     
-    let semaphore = dispatch_semaphore_create(0)
+    let semaphore = DispatchSemaphore(value: 0)
     
-    let task = session.dataTaskWithRequest(request) {
+    let task = session.dataTask(with: request, completionHandler: {
         
-        (let data, let response, let error) in
+        (data, response, error) in
         
-        guard let _:NSData = data, let _:NSURLResponse = response  where error == nil else {
+        guard let _:Data = data, let _:URLResponse = response, error == nil else {
             
             print("FAILED LOADING DATA (PHP ERROR):")
             print(error)
             
-            dispatch_semaphore_signal(semaphore)
+            semaphore.signal()
             
             return
             
@@ -130,11 +130,11 @@ func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
             
             if let data = data {
                 
-                items = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+                items = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
                 
                 let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Fullname", ascending: true)
                 
-                sortedItems = items.sortedArrayUsingDescriptors([descriptor])
+                sortedItems = items.sortedArray(using: [descriptor])
                 
             } else {
                 
@@ -143,14 +143,14 @@ func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
                 
             }
             
-            dispatch_semaphore_signal(semaphore)
+            semaphore.signal()
             
         } catch let error as NSError {
             
             print("LOADING DATA FAILED (POST PHP ERROR):")
             print(error)
             
-            dispatch_semaphore_signal(semaphore)
+            semaphore.signal()
             
         }
         
@@ -158,27 +158,27 @@ func jsonFilterItems(keyword: String, completion: (result: String) -> Void) {
         
         completion(result: "loaded data")
         
-    }
+    }) 
     
     task.resume()
     
-    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+    semaphore.wait(timeout: DispatchTime.distantFuture)
     
 }
 
 func jsonGetCategory() -> Bool {
     
-    let url = NSURL(string: "http://tico-kk.eu/api.php?getKeywords")
-    let data = NSData(contentsOfURL: url!)
+    let url = URL(string: "http://tico-kk.eu/api.php?getKeywords")
+    let data = try? Data(contentsOf: url!)
     
     do {
         
         if let data = data {
             
-            let tmpCategorys = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers) as! NSArray
+            let tmpCategorys = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
             
             let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Category", ascending: true)
-            let sortedCategorys = tmpCategorys.sortedArrayUsingDescriptors([descriptor])
+            let sortedCategorys = tmpCategorys.sortedArray(using: [descriptor])
             
             categorys = []
             
