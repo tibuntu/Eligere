@@ -1,3 +1,8 @@
-cd /home/developer/InOutPutter/phptry
-git pull
-apache2ctl reload
+---
+before_script:
+  - cd /home/developer/InOutPutter/phptry
+  - git pull
+
+reload:
+  script:
+    apache2ctl reload
