@@ -1,9 +1,7 @@
 ---
 - name: Install apt updates
   apt:
-    name: '*'
-    state: latest
-  tags: updates
+    upgrade: dist
 
 - name: Install default apt packages
   apt:
@@ -29,3 +27,27 @@
     name: "{{item.value.name}}"
     group: "{{item.value.group}}"
   with_dict: "{{users}}"
+
+- name: Insert default lines into .bashrc files
+  lineinfile:
+    line: "alias ll='ls -lh'"
+    dest: "{{item.value.home}}/.bashrc"
+    state: present
+  with_dict: "{{users}}"
+
+- name: Create ssh directory for developer
+  file:
+    name: "{{developer_home}}/.ssh"
+    owner: "developer"
+    group: "developer"
+    state: directory
+
+- name: Deploy ssh-key so checkout is possible
+  copy:
+    src: "../files/id_rsa"
+    dest: "{{developer_home}}/.ssh/id_rsa"
+    owner: "developer"
+    group: "developer"
+    mode: 0600
+
+- include: apache.yml

@@ -1,9 +1,22 @@
 ---
+projekt: "eligere"
+log_path: "/var/log/apache2/eligere/"
+document_root: "/var/www"
+developer_home: "/home/developer"
+apache_conf_path: "/etc/apache2/sites-available"
+
 users:
   developer:
     name: "developer"
     group: "developer"
+    home: "/home/developer"
+    aliases:
+      - "alias ll='ls -lh'"
+      - "alias l='ls -lah'"
   nkrueger:
     name: "nkrueger"
     group: "developer"
-
+    home: "/home/nkrueger"
+    aliases:
+      - "alias ll='ls -lh'"
+      - "alias l='ls -lah'"

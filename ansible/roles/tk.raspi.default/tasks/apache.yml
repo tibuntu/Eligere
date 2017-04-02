@@ -1,0 +1,35 @@
+---
+- name: Create apache directories
+  file:
+    name: "{{item}}"
+    state: directory
+  with_items:
+    - "{{document_root}}"
+    - "{{log_path}}"
+
+- name: Checkout git repo with API files inside
+  git:
+    repo: 'git@gitlab.com:tibuntu/Eligere.git'
+    dest: "{{developer_home}}/eligere"
+    accept_hostkey: yes
+    key_file: "{{developer_home}}/.ssh/id_rsa"
+
+- name: Copy API files to document root
+  file:
+    src: "{{developer_home}}/eligere/API"
+    dest: "{{document_root}}/eligere"
+    force: True
+    state: link
+
+- name: Deploy apache configuration
+  template:
+    src: "php.conf.j2"
+    dest: "{{apache_conf_path}}/php.conf"
+
+- name: Activate apache site
+  command: "a2ensite php"
+
+- name: Reload apache
+  service:
+    name: apache2
+    state: reloaded

@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+  ServerName {{domain_name}}.de
+  ServerAlias www.{{domain_name}}.de
+
+Alias /{{projekt}} {{document_root}}/{{projekt}}
+
+  ServerAdmin webmaster@localhost
+  DocumentRoot {{document_root}}/{{projekt}}/
+        <Directory {{document_root}}/{{projekt}}/>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+        ErrorLog {{log_path}}error-{{projekt}}.log
+        LogLevel warn
+        CustomLog {{log_path}}access-{{projekt}}.log combined
+</VirtualHost>
