@@ -1,6 +1,6 @@
 ---
 before_script:
-  - cd /home/developer/InOutPutter/phptry
+  - cd /home/developer/Eligere/phptry
   - git pull
 
 reload:
