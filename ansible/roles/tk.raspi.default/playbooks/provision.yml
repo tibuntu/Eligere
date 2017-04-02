@@ -1,0 +1,6 @@
+---
+- hosts: raspberry
+  become: True
+  
+  roles:
+    - { role: tk.raspi.default }

@@ -1,0 +1,31 @@
+---
+- name: Install apt updates
+  apt:
+    name: '*'
+    state: latest
+  tags: updates
+
+- name: Install default apt packages
+  apt:
+    name: "{{item}}"
+    state: latest
+  with_items:
+    - apache2
+    - htop
+    - mysql-server
+    - ansible
+    - git
+
+- name: Create default groups
+  group:
+    name: "{{item}}"
+    state: present
+  with_items:
+    - admins
+    - developer
+
+- name: Create default users
+  user:
+    name: "{{item.value.name}}"
+    group: "{{item.value.group}}"
+  with_dict: "{{users}}"

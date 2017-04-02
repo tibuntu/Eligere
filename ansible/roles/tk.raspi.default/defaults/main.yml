@@ -1,0 +1,9 @@
+---
+users:
+  developer:
+    name: "developer"
+    group: "developer"
+  nkrueger:
+    name: "nkrueger"
+    group: "developer"
+
