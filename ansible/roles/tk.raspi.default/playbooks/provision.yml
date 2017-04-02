@@ -1,6 +1,8 @@
 ---
 - hosts: raspberry
   become: True
+  vars_files: 
+    - "../defaults/main-vault.yml"
   
   roles:
     - { role: tk.raspi.default }
