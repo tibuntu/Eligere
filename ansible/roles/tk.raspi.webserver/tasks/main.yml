@@ -1,0 +1,33 @@
+---
+- name: Create apache directories
+  file:
+    name: "{{item}}"
+    state: directory
+  with_items:
+    - "{{document_root}}/rolli-rockers"
+    - "{{document_root}}/rolli-rockers2"
+
+- name: Deploy default wordpress setup wordpress
+  unarchive:
+    src: "https://wordpress.org/latest.tar.gz"
+    dest: "{{item}}"
+    remote_src: True
+  with_items:
+    - "{{document_root}}/rolli-rockers/"
+    - "{{document_root}}/rolli-rockers2/"
+
+- name: Deploy apache configuration
+  template:
+    src: "{{item}}.j2"
+    dest: "{{apache_conf_path}}/{{item}}"
+  with_items:
+    - "rolli-rockers.conf"
+    - "rolli-rockers2.conf"
+
+- name: Activate apache site
+  command: "a2ensite rolli-rockers rolli-rockers2"
+
+- name: Reload apache
+  service:
+    name: apache2
+    state: reloaded

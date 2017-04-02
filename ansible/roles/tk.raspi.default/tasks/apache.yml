@@ -23,8 +23,8 @@
 
 - name: Deploy apache configuration
   template:
-    src: "php.conf.j2"
-    dest: "{{apache_conf_path}}/php.conf"
+    src: "eligere.conf.j2"
+    dest: "{{apache_conf_path}}/eligere.conf"
 
 - name: Activate apache site
   command: "a2ensite php"
