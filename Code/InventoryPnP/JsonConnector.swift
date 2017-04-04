@@ -14,7 +14,7 @@ class jsonConnector {
 
 func jsonGetSets() {
     
-    let url = URL(string: "http://tico-kk.eu/api.php?getSet")
+    let url = URL(string: "http://eligere.de/api.php?getSet")
     let data = try? Data(contentsOf: url!)
     
     do {
@@ -41,7 +41,7 @@ func jsonPostItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = URL(string: "http:/tico-kk.eu/api.php?postItem&\(fullUrlTrailer)")
+    let url = URL(string: "http:/eligere.de/api.php?postItem&\(fullUrlTrailer)")
     let request = NSMutableURLRequest(url: url!)
     
     let session = URLSession.shared
@@ -67,7 +67,7 @@ func jsonEditItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = URL(string: "http:/tico-kk.eu/api.php?editItem&\(fullUrlTrailer)")
+    let url = URL(string: "http:/eligere.de/api.php?editItem&\(fullUrlTrailer)")
     let request = NSMutableURLRequest(url: url!)
     
     let session = URLSession.shared
@@ -91,7 +91,7 @@ func jsonEditItem(_ urlTrailer: String) -> Bool {
 
 func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String) -> Void) {
     
-    let url = URL(string: "http:/tico-kk.eu/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
+    let url = URL(string: "http:/eligere.de/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
     let request = NSMutableURLRequest(url: url!)
     let session = URLSession.shared
     
@@ -168,7 +168,7 @@ func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String)
 
 func jsonGetCategory() -> Bool {
     
-    let url = URL(string: "http://tico-kk.eu/api.php?getKeywords")
+    let url = URL(string: "http://eligere.de/api.php?getKeywords")
     let data = try? Data(contentsOf: url!)
     
     do {

@@ -49,7 +49,7 @@ class ItemTableViewController: UITableViewController {
         
         let item = sortedItems[indexPath.row]
         
-        let imageUrl = "http://tico-kk.eu/images/\(item["Image"] as! String)"
+        let imageUrl = "http://eligere.de/images/\(item["Image"] as! String)"
         
         let url = URL(string: imageUrl)
 
