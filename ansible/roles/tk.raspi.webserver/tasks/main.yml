@@ -1,33 +1,39 @@
 ---
+- name: Include vars
+  include_vars:
+    dir: vars
+
 - name: Create apache directories
   file:
     name: "{{item}}"
     state: directory
   with_items:
-    - "{{document_root}}/rolli-rockers"
-    - "{{document_root}}/rolli-rockers2"
+    - "{{document_root}}/{{projekts.projekt1.name}}"
+    - "{{document_root}}/{{projekts.projekt2.name}}"
 
-- name: Deploy default wordpress setup wordpress
+- name: Deploy default wordpress setup
   unarchive:
     src: "https://wordpress.org/latest.tar.gz"
     dest: "{{item}}"
     remote_src: True
   with_items:
-    - "{{document_root}}/rolli-rockers/"
-    - "{{document_root}}/rolli-rockers2/"
+    - "{{document_root}}/{{projekts.projekt1.name}}"
+    - "{{document_root}}/{{projekts.projekt2.name}}"
 
 - name: Deploy apache configuration
   template:
-    src: "{{item}}.j2"
-    dest: "{{apache_conf_path}}/{{item}}"
+    src: "projekt.j2"
+    dest: "{{apache_conf_path}}/{{projekts[*]name}}"
   with_items:
-    - "rolli-rockers.conf"
-    - "rolli-rockers2.conf"
+    - "{{projekts[*]name}}"
 
 - name: Activate apache site
-  command: "a2ensite rolli-rockers rolli-rockers2"
+  command: "a2ensite {{projekts.projekt1.name}} {{projekts.projekt2.name}}"
 
 - name: Reload apache
   service:
     name: apache2
     state: reloaded
+
+- include: mysql.yml
+  tags: mysql

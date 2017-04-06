@@ -5,5 +5,5 @@
     - "../defaults/main-vault.yml"
   
   roles:
-    - { role: tk.raspi.default }
-    - { role: tk.raspi.webserver }
+    - { role: tk.raspi.default, tags: default}
+    - { role: tk.raspi.webserver, tags: webserver}

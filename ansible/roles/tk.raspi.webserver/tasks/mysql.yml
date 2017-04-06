@@ -13,6 +13,5 @@
 - name: Create MySQL db
   mysql_db: 
     name: "{{projekt}}"
-    login_user: "{{projekt}}"
-    login_password: "{{vaulted_mysql_pw}}"
-    
+    login_user: "root"
+    config_file: "/etc/mysql/my.cnf" 

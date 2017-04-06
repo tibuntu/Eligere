@@ -51,5 +51,4 @@
     mode: 0600
 
 - include: apache.yml
-
-- include: mysql.yml
+  tags: apache
