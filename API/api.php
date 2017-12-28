@@ -5,7 +5,7 @@
   #include 'postItem.php';
   #include 'postSet.php';
   #include 'getSet.php';
-  include '404.php';
+  #include '404.php'; // Does not work right now
   $uri = $_SERVER['QUERY_STRING'];
   $script = $_SERVER['SCRIPT_NAME'];
   
