@@ -1,8 +1,0 @@
----
-before_script:
-  - cd /home/developer/Eligere/phptry
-  - git pull
-
-reload:
-  script:
-    apache2ctl reload
