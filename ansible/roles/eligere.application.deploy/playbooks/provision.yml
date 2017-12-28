@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  become: True
+  vars_files: 
+    - "../defaults/main-vault.yml"
+  
+  roles:
+    - { role: eligere.application.deploy, tags: deploy}
