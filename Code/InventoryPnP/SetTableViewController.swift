@@ -44,11 +44,11 @@ class SetTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SetTableViewCell", for: indexPath) as! SetTableViewCell
 
-        let set = sets[indexPath.row]
+        let set = sets[indexPath.row] as! [String:AnyObject]
         
         cell.setLabel.text = "\(set["Fullname"] as! String) (ID: \(set["id"] as! String))"
         
-        print(set["Keywords"] as? String)
+        print(set["Keywords"] as? String as Any)
 
         return cell
     }
@@ -89,7 +89,7 @@ class SetTableViewController: UITableViewController {
         if let selectedSetCell = sender as? SetTableViewCell {
             
             let indexPath = tableView.indexPath(for: selectedSetCell)!
-            let selectedSet = sets[indexPath.row]
+            let selectedSet = sets[indexPath.row] as! [String:AnyObject]
             
             print(selectedSet)
             

@@ -46,10 +46,10 @@
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
-		<false/>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>eligere.de - 2 - 2</key>
+			<key>secret-role.com - 2 - 2</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

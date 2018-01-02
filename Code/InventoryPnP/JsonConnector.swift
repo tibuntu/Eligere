@@ -14,48 +14,43 @@ class jsonConnector {
 
 func jsonGetSets() {
     
-    let url = URL(string: "http://eligere.de/api.php?getSet")
-    let data = try? Data(contentsOf: url!)
-    
-    do {
-        
-        if let data = data {
-            
-            sets = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSArray
-            
+    let url = URL(string: "http://secret-role.com/api.php?getSet")
+
+    URLSession.shared.dataTask(with:url!) { (data, response, error) in
+        if error != nil {
+            print(error ?? "Hallo")
         } else {
-            
-            print("no data")
-            
+            do {
+                
+                let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
+                let currentConditions = parsedData["currently"] as! [String:Any]
+                
+                print(currentConditions)
+                
+                let currentTemperatureF = currentConditions["temperature"] as! Double
+                print(currentTemperatureF)
+            } catch let error as NSError {
+                print(error)
+            }
         }
         
-    } catch let error as NSError {
-        
-        print(error)
-        
-    }
-    
+        }
+        .resume()
 }
 
 func jsonPostItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = URL(string: "http:/eligere.de/api.php?postItem&\(fullUrlTrailer)")
-    let request = NSMutableURLRequest(url: url!)
+    let url = URL(string: "http:/secret-role.com/api.php?postItem&\(fullUrlTrailer)")
     
     let session = URLSession.shared
     
     let postString:NSString = "postItem&\(fullUrlTrailer)" as NSString
     let postData = postString.data(using: String.Encoding.ascii.rawValue)!
     
-    request.httpMethod = "POST"
-    request.httpBody = postData
-    request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
-    
-    print("Posting item (URL: \(url))...")
-
-    let task = session.dataTask(with: request)
+    print("Posting item (URL: \(String(describing: url)))...")
+    let task = session.dataTask(with: url!)
     
     task.resume()
     
@@ -67,21 +62,16 @@ func jsonEditItem(_ urlTrailer: String) -> Bool {
     
     let fullUrlTrailer = "keywords=\(category)&\(urlTrailer)"
     
-    let url = URL(string: "http:/eligere.de/api.php?editItem&\(fullUrlTrailer)")
-    let request = NSMutableURLRequest(url: url!)
+    let url = URL(string: "http://secret-role.com/api.php?editItem&\(fullUrlTrailer)")
     
     let session = URLSession.shared
     
     let postString:NSString = "editItem&\(fullUrlTrailer)" as NSString
     let postData = postString.data(using: String.Encoding.ascii.rawValue)!
     
-    request.httpMethod = "POST"
-    request.httpBody = postData
-    request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
+    print("Editing item (URL: \(String(describing: url)))...")
     
-    print("Editing item (URL: \(url))...")
-    
-    let task = session.dataTask(with: request)
+    let task = session.dataTask(with: url!)
     
     task.resume()
     
@@ -91,7 +81,7 @@ func jsonEditItem(_ urlTrailer: String) -> Bool {
 
 func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String) -> Void) {
     
-    let url = URL(string: "http:/eligere.de/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
+    let url = URL(string: "http://secret-role.com/api.php?getComp&keywords=\(keyword)&setid=\(setId)")
     let request = NSMutableURLRequest(url: url!)
     let session = URLSession.shared
     
@@ -102,14 +92,14 @@ func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String)
     request.httpBody = postData
     request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData
     
-    print("Loading items (URL: \(url))...")
+    print("Loading items (URL: \(String(describing: url)))...")
     
     sortedItems = []
     items = []
     
     let semaphore = DispatchSemaphore(value: 0)
     
-    let task = session.dataTask(with: request, completionHandler: {
+    let task = session.dataTask(with: url!, completionHandler: {
         
         (data, response, error) in
         
@@ -134,7 +124,7 @@ func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String)
                 
                 let descriptor: NSSortDescriptor = NSSortDescriptor(key: "Fullname", ascending: true)
                 
-                sortedItems = items.sortedArray(using: [descriptor])
+                sortedItems = items.sortedArray(using: [descriptor]) as NSArray
                 
             } else {
                 
@@ -156,7 +146,7 @@ func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String)
         
         print("Response: \(response)")
         
-        completion(result: "loaded data")
+        completion("loaded data")
         
     }) 
     
@@ -168,7 +158,7 @@ func jsonFilterItems(_ keyword: String, completion: @escaping (_ result: String)
 
 func jsonGetCategory() -> Bool {
     
-    let url = URL(string: "http://eligere.de/api.php?getKeywords")
+    let url = URL(string: "http://secret-role.com/api.php?getKeywords")
     let data = try? Data(contentsOf: url!)
     
     do {
@@ -184,7 +174,7 @@ func jsonGetCategory() -> Bool {
             
             for value in sortedCategorys {
                 
-                let tmpCategory = value
+                let tmpCategory = value as! [String:AnyObject]
                 
                 if mode != "" && tmpCategory["Name"] as! String == "All" {
                         
@@ -192,7 +182,7 @@ func jsonGetCategory() -> Bool {
                         
                 } else {
                     
-                    print("Append \(tmpCategory["Name"] as! String)")
+                    print("Append \(tmpCategory["Name"] as! [String:AnyObject])")
                     categorys.append(tmpCategory["Name"] as! String)
                         
                 }

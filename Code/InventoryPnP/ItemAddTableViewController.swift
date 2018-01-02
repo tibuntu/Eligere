@@ -10,7 +10,7 @@ import UIKit
 
 class ItemAddTableViewController: UITableViewController {
 
-    let categorys = []
+    let categorys = [] .last
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -70,7 +70,7 @@ class ItemAddTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if sender === saveButton {
+        if sender as AnyObject === saveButton {
             
             var index = 0
             

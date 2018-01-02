@@ -47,9 +47,10 @@ class ItemTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! ItemTableViewCell
         
-        let item = sortedItems[indexPath.row]
+        let item = sortedItems[indexPath.row] as! [String:AnyObject]
         
-        let imageUrl = "http://eligere.de/images/\(item["Image"] as! String)"
+        let imageUrl = "http://secret-role.com/images/\(item["Image"] as! String)"
+        
         
         let url = URL(string: imageUrl)
 
@@ -57,7 +58,7 @@ class ItemTableViewController: UITableViewController {
         
         cell.nameLabel.text = item["Fullname"] as? String
         
-        cell.strengthLabel.text = item["Strength"] as? String
+        cell.strengthLabel.text = (item["Strength"] as! String)
         
         cell.itemImage.image = UIImage(data: data!)
         
