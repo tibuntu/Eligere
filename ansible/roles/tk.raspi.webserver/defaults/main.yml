@@ -1,5 +1,0 @@
----
-projekt: changeme
-log_path: "/var/log/apache2/eligere/"
-document_root: "/var/www"
-apache_conf_path: "/etc/apache2/sites-available"
